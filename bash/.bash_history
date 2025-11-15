@@ -212,3 +212,145 @@ tailscale down
 sudo tailscale down
 nvim ~/.profile
 nvim ~/.XCompose
+cd dotfiles
+tree -a -I '.git' ~/dotfiles
+stow bash
+stow --adopt bash
+mkdir -p zsh
+cp -v ~/.zshrc ~/dotfiles/zsh/.zshrc
+clear
+tree -a -I '.git' ~/dotfiles
+stow --adopt zsh
+cp -v ~/.XCompose ~/dotfiles/XCompose/.XCompose
+stow --adapt XCompose
+stow --adopt XCompose
+clear
+tree -a -I '.git' ~/dotfiles
+mkdir profile
+cp -v ~/.profile ~/dobfile/profile/.profile
+clear
+tree -a -I '.git' ~/dotfiles
+cp -v ~/.profile ~/dotfiles/profile/.profile
+stow --adopt profile
+clear
+tree -a -I '.git' ~/dotfiles
+lazygit
+mkdir -p starship/.config
+cp -v ~/.config/starship.toml ~/dotfiles/starship/.config/starship.toml
+clear
+tree -a -I '.git' ~/dotfiles
+lazygit
+stow --adopt starship
+mkdir -p omarchy/.config/omarchy
+clear
+tree -a -I '.git' ~/dotfiles
+cp -r -v ~/.config/omarchy/* ~/dotfiles/omarchy/.config/omarchy/
+clear
+tree -a -I '.git' ~/dotfiles
+rm -rf omarchy
+clear
+tree -a -I '.git' ~/dotfiles
+cd nvim/.config/nvim/lua/plugins
+clear
+tree
+rm -rf theme.lua
+clear
+tree
+ln -s ~/.config/omarchy/current/theme theme.lua
+tree
+cat theme.lua
+clear
+cd ~/dotfiles
+stow nvim
+clear
+cd nvim/.config/nvim/lua/plugins
+tree
+rm -rf theme.lua
+cd ~/dotfiles
+stow nvim
+clear
+tree -a -I '.git' ~/dotfiles
+mkdir -p alacritty/.config ghostty/.config hypr/.config kitty/.config lazygit/.config git/.config
+clear
+tree -a -I '.git' ~/dotfiles
+mkdir -p alacritty/.config/alacritty ghostty/.config/ghostty git/.config/git hypr/.config/hypr kitty/.config/kitty lazygit/.config/lazygit
+clear
+tree -a -I '.git' ~/dotfiles
+clear
+tree -a -I '.git' ~/dotfiles
+lazygit
+stow --adopt alacritty
+stow --adopt ghostty git hypr kitty lazygit
+clear
+tree -a -I '.git' ~/dotfiles
+cd hypr/.config/hypr
+ls
+nvim input.conf
+cat looknfeel.conf
+nvim looknfeel.conf
+clear
+cd ~/dotfiles
+clear
+tree -a -I '.git' ~/dotffiles
+tree -a -I '.git' ~/dotfiles
+mkdir -p waybar/.config/waybar
+clear
+tree -a -I '.git' ~/dotfiles
+stow waybar
+stow --adopt waybar
+clear
+tree -a -I '.git' ~/dotfiles
+lt
+lta
+ff
+nvim bash/.bashrc
+lg
+source ~/.bashrc
+lg
+nvim bash/.bashrc
+clear
+lta
+mkdir -p bash/plugins
+clear
+lta
+cd bash
+lta
+clear
+tree -a
+clear
+lta
+cd .ble.sh
+cd plugins/.ble.sh
+lta
+cat README.md
+clear
+nvim README.md
+cd ..
+lts
+lta
+cd .ble.sh
+make
+cd ...
+cd ..
+ls
+clear
+lsa
+nvim .bashrc
+source ~/.bashrc
+ls -la plugins/ble.sh/out/ble.sh
+ls -la plugins/ble.sh/out/
+ls -la plugins/ble.sh/out
+ls -la plugins/ble.sh
+cd lubins
+cd plugins
+lta
+lta .ble.sh/out
+clear
+lta ~/dotfiles/starship
+cp -v ~/dotfiles/starship/.config/starship.toml.bak
+mv ~/dotfiles/starship/.config/starship.toml.bak
+cp -v ~/dotfiles/starship/.config/ ~/dotfiles/starship/.config/starship.toml.bak
+cp -v ~/dotfiles/starship/.config/starship.toml ~/dotfiles/starship/.config/starship.toml.bak
+lta ~/
+clear
+lta ~/dotfiles/starship

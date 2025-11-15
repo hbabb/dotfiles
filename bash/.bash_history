@@ -354,3 +354,19 @@ cp -v ~/dotfiles/starship/.config/starship.toml ~/dotfiles/starship/.config/star
 lta ~/
 clear
 lta ~/dotfiles/starship
+lta
+cd ~/.config/nvim
+clear
+lta
+cd lua/plugins/
+lta
+nvim
+rm -rf theme.lua
+ln -s ~/.config/omarchy/current/theme/ theme.lua
+lta
+nvim
+clear
+rm -rf theme.lua
+lta
+nvim them.lua
+clear

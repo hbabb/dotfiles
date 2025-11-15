@@ -1,0 +1,1 @@
+/home/hbabb/.config/omarchy/current/theme/neovim.lua

@@ -370,3 +370,97 @@ rm -rf theme.lua
 lta
 nvim them.lua
 clear
+ls ~/.config/alacritty/
+nvim ~/.config/alacritty/alacritty.toml 
+lta ~/.config/alacritty
+cat ~/dotfiles/alacritty/.config/alacritty/alacritty.toml 
+clear
+cd ~/dotfiles
+lg
+cd ~/dev/learn/frontend-mentor
+lg
+cd ..
+cd frontend-mentor/weather-app/
+lta
+clear
+ls
+cd apps/api
+ls
+clear
+tree src
+npm i -g pnpm yarn bun deno nx @angular/cli @nestjs/cli
+npm -v
+pnpm -v
+yarn -v
+bun -v
+deno -v
+node -v
+clear
+tree src
+nx generate @nx/nest:module src/app/geolocation/geolocation
+tree src
+nx generate @nx/nest:service src/app/geolocation/geolocation
+nx generate @nx/nest:controller src/app/geolocation/geolocation
+tree src
+cd ../..
+cat package.json
+bun add openmeteo
+cat package.json
+clear
+nvim ~/dotfiles/starship/.config/starship.toml
+clear
+cd ~/dotfiles
+lg
+cd ~
+ls -la /mnt/firecuda
+ln -s /mnt/firecuda ~/dev
+cd ~/dev
+lta
+mkdir -p projects learn/dave-gray homelab hacking
+lta
+cd learn
+git clone git@github.com:hbabb/frontend-mentor.git
+lta
+cd frontend-mentor/weather-app
+clear
+nvim
+cd ~/.config/omarchy
+lta
+cd themes
+nvim tokyo-night
+clear
+cd ~
+ls
+cd dev
+clear
+lta
+cd learn/frontend-mentor/we
+lta
+clear
+nvim
+bun i
+nvim
+c
+clear
+cd ~/dev/learn/frontend-mentor
+lg
+cd vaults
+ls
+cd LCARS
+git init
+ls
+ls -la
+cd .obsidian
+lta
+cd snippets
+nvim
+clear
+lta
+nvim LCARS-02.json
+cd ....
+cd ../..
+lg
+git remote add origin git@github.com:hbabb/LCARS_Obsidian.git
+lg
+chsh -s $(which zsh)
+sudo reboot

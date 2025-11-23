@@ -21,3 +21,5 @@ alias vi='nvim'
 
 # Attach ble.sh (This line MUST be at the bottom)
 [[ ! ${BLE_VERSION-} ]] || ble-attach
+
+export UV_LINK_MODE=copy

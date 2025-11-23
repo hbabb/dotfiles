@@ -32,3 +32,5 @@ else
   export EDITOR='nvim'
 fi
 
+export UV_LINK_MODE=copy
+

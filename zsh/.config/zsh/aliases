@@ -25,10 +25,18 @@ open() {
   xdg-open "$@" >/dev/null 2>$1 &
 }
 
+alias cat='bat'
+
 # Directories
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias --='cd -'
+
+# Ripgrep
+alias rg='rg --smart-case --pretty'
+alias rgf='rg --files-with-matches'
+alias rgi='rg -i'
 
 # Tools
 alias d='docker'
@@ -40,4 +48,19 @@ alias g='git'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias gcad='git commit -a --amend'
+alias gst='git status'
+alias gp='git push'
+alias gl='git pull'
+alias gco='git checkout'
+alias gb='git branch'
+alias gd='git diff'
+alias glog='git log --oneline --graph --decorate'
 
+# System
+alias ports='netstat -tulanp'
+alias psg='ps aux | rg' 
+
+# Safety nets
+alias rm='rm -i' # Confirm before delete
+alias cp='cp -i' # Confirm before overwrite
+alias mv='mv -i' # Confirm before overwrite

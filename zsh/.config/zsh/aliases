@@ -64,3 +64,8 @@ alias psg='ps aux | rg'
 alias rm='rm -i' # Confirm before delete
 alias cp='cp -i' # Confirm before overwrite
 alias mv='mv -i' # Confirm before overwrite
+
+# Zellij Developer layout
+zdev() {
+    zellij --layout ~/.config/zellij/layouts/dev.kdl
+  }

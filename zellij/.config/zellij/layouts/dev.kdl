@@ -1,0 +1,36 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  tab name="Developer" {
+    pane split_direction="vertical" {
+      pane size="70%" name="nvim"
+      pane split_direction="horizontal" {
+        pane command="zsh" name="web"
+        pane command="zsh" name="api"
+      }
+    }
+  }
+  tab name="Lazygit" {
+    pane command="lazygit" name="Lazygit"
+  }
+  tab name="DevOps" {
+    pane size="70%" command="lazydocker" name="Lazydocker"
+    pane command="zsh" name="shell"
+  }
+  tab name="Cyber" {
+    pane command="zsh" name="shell-1"
+    pane command="zsh" name="shell-2"
+  }
+  tab name="Data/Web3" {
+    pane command="jupyter console" name="jupyter"
+    pane command="zsh" name="shell"
+  }
+}

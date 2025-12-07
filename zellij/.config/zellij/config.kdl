@@ -282,7 +282,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "tokyo-night"
+theme "catppuccin_mocha"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -293,6 +293,7 @@ theme "tokyo-night"
 // Default: $SHELL
 // 
 // default_shell "fish"
+default_shell "zsh"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 

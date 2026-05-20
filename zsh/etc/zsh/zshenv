@@ -1,0 +1,30 @@
+# /etc/zsh/zshenv
+
+# =========================================================
+# System-wide Zsh config bootstrap
+# =========================================================
+#
+# This file is provided for optional future use.
+#
+# It is not part of the active user-level setup unless it is installed into:
+#
+#   /etc/zsh/zshenv
+#
+# Keep this file minimal. zshenv runs for every Zsh invocation, including
+# non-interactive shells and scripts.
+
+# =========================================================
+# XDG config home
+# =========================================================
+
+if [[ -z "$XDG_CONFIG_HOME" ]]; then
+  export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+# =========================================================
+# ZDOTDIR
+# =========================================================
+
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+fi

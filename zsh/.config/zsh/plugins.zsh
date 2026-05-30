@@ -20,6 +20,14 @@ mkdir -p "$ZSH_PLUGIN_DIR"
 mkdir -p "${ZDOTDIR:-$HOME/.config/zsh}/vendor"
 
 # =========================================================
+# Oh My Zsh plugins cache
+# =========================================================
+
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$$HOME/.cache}/oh-my-zsh"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+fpath=("$ZSH_CACHE_DIR/completions" $fpath)
+
+# =========================================================
 # Standalone plugin helper
 # =========================================================
 

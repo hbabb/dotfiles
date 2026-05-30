@@ -60,16 +60,6 @@ source_if_exists "$ZDOTDIR/options.zsh"
 source_if_exists "$ZDOTDIR/completions.zsh"
 
 # =========================================================
-# Tool manager
-# =========================================================
-
-# mise manages project runtimes such as Node, Python, Ruby, and PHP.
-# This belongs in .zshrc because mise updates the interactive shell environment.
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
-fi
-
-# =========================================================
 # Smart directory navigation
 # =========================================================
 
@@ -139,8 +129,19 @@ source_if_exists "$ZDOTDIR/plugins.zsh"
 source_if_exists "$ZDOTDIR/prompt.zsh"
 
 # =========================================================
+# Tool manager
+# =========================================================
+
+# mise manages project runtimes such as Node, Python, Ruby, and PHP.
+# This belongs in .zshrc because mise updates the interactive shell environment.
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+# =========================================================
 # Cleanup
 # =========================================================
 
 # Keep the interactive namespace clean after startup.
 unfunction source_if_exists
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"

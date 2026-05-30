@@ -189,7 +189,17 @@ fi
 # Rails shortcut.
 if command -v rails >/dev/null 2>&1; then
   alias r='rails'
+  alias br='bin/rails'
 fi
+
+# Package Install Aliases
+alias npm="sfw npm"
+alias npx="sfw npx"
+alias pnpm="sfw pnpm"
+alias pnpx="sfw pnpx"
+alias yarn="sfw yarn"
+alias bun="sfw bun"
+alias bunx="sfw bunx"
 
 # Attach to the Work tmux session, or create it if missing.
 if command -v tmux >/dev/null 2>&1; then
@@ -218,4 +228,8 @@ if command -v git >/dev/null 2>&1; then
 
   alias glog='PAGER="less -F -X" git log'
   alias gadog='PAGER="less -F -X" git log --all --decorate --oneline --graph'
+fi
+
+if command -v lazygit >/dev/null 2>&1; then
+  alias lg='lazygit'
 fi

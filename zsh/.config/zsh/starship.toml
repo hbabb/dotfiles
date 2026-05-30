@@ -3,6 +3,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
+scan_timeout = 100
+
 format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$line_break$character"
 
 [os]

@@ -1,0 +1,53 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Heath Babb
+	email = hbabb@techsolvd.com
+    useConfigOnly = true
+
+[core]
+    editor = nvim
+    autocrlf = input
+    safecrlf = warn
+    excludesfile = ~/.config/git/ignore
+
+[init]
+	defaultBranch = main
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[pull]
+    ; ff = only
+	rebase = true
+
+[fetch]
+    prune = true
+
+[merge]
+    conflictStyle = zdiff3
+
+[diff]
+    algorithm = histogram
+    renames = true
+
+[rerere]
+    enabled = true
+
+[rebase]
+    autoSquash = true
+
+[status]
+    ; short = true
+    branch = true
+
+[color]
+    ui = auto
+
+[alias]
+    st = status
+    sw = switch
+    co = checkout
+    br = branch
+    ci = commit
+    lg = log --oneline --decorate --graph --all

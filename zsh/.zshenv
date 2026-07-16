@@ -38,3 +38,6 @@ if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
 fi
 
 . "$HOME/.local/share/../bin/env"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

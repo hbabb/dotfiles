@@ -1,0 +1,20 @@
+clear
+cd nushell/.config/nushell
+ls -a
+nvim
+ls -a
+ls -a scripts
+nvim scripts/posh-theme.nu
+nvim
+clear
+nvim
+clear
+cd ~
+cd ~/
+zd ~
+cd ~
+clear
+nvim
+cd ~
+nvim
+cd ../../..

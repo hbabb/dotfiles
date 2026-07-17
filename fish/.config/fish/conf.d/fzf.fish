@@ -6,7 +6,7 @@ end
 
 # UI
 set -gx FZF_DEFAULT_OPTS "
---hight=60%
+--height=60%
 --layout=reverse
 --border=rounded
 --prompt=' '

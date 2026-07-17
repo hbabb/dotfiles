@@ -31,5 +31,8 @@ set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 # Starship config location
 set -gx STARSHIP_CONFIG "$HOME/.config/fish/starship.toml"
 
+# Oh My Posh config location
+set -q POSH_THEME; or set -gx POSH_THEME "$HOME/.config/fish/oh-my-posh/kali.omp.json"
+
 # User PATH entries
 fish_add_path -g "$HOME/.local/bin"

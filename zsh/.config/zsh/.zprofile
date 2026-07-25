@@ -4,12 +4,6 @@
 # Login shell configuration
 # =========================================================
 #
-# This file is read by login shells.
-#
-# Keep this file small. Most interactive shell behavior belongs in:
-#
-#   ~/.config/zsh/.zshrc
-#
-# Environment variables that should exist in every Zsh process belong in:
-#
-#   ~/.config/zsh/.zshenv
+# Read by login shells only. Keep this small — most interactive
+# behavior belongs in .zshrc. Env vars needed by every zsh process
+# belong in .zshenv.

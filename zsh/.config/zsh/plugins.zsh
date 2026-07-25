@@ -3,16 +3,13 @@
 # =========================================================
 # Plugins
 # =========================================================
-#
 # This setup does not load the Oh My Zsh framework.
-#
-# Standalone plugins are preferred.
-# Oh My Zsh is used only as a vendor library for selected plugins.
+# Standalone plugins are preferred; Oh My Zsh is used only as
+# a vendor library for selected plugins.
 
 # =========================================================
 # Paths
 # =========================================================
-
 ZSH_PLUGIN_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 OMZ_LIB="${ZDOTDIR:-$HOME/.config/zsh}/vendor/oh-my-zsh"
 
@@ -22,15 +19,13 @@ mkdir -p "${ZDOTDIR:-$HOME/.config/zsh}/vendor"
 # =========================================================
 # Oh My Zsh plugins cache
 # =========================================================
-
-export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$$HOME/.cache}/oh-my-zsh"
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
 mkdir -p "$ZSH_CACHE_DIR/completions"
 fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
 # =========================================================
 # Standalone plugin helper
 # =========================================================
-
 _zsh_plugin_load() {
   local repo="$1"
   local name="$2"
@@ -56,7 +51,6 @@ _zsh_plugin_load() {
 # =========================================================
 # Oh My Zsh vendor helper
 # =========================================================
-
 _omz_library_load() {
   local plugin="$1"
   local plugin_file="$OMZ_LIB/plugins/$plugin/$plugin.plugin.zsh"
@@ -82,7 +76,6 @@ _omz_library_load() {
 # =========================================================
 # Plugin update helper
 # =========================================================
-
 zplugin-update() {
   local dir
 
@@ -101,7 +94,6 @@ zplugin-update() {
 # =========================================================
 # Standalone plugins
 # =========================================================
-
 _zsh_plugin_load \
   https://github.com/zsh-users/zsh-autosuggestions.git \
   zsh-autosuggestions \
@@ -125,7 +117,6 @@ _zsh_plugin_load \
 # =========================================================
 # Oh My Zsh library plugins
 # =========================================================
-
 _omz_library_load git
 _omz_library_load sudo
 _omz_library_load systemd
@@ -139,6 +130,5 @@ _omz_library_load python
 # =========================================================
 # Cleanup
 # =========================================================
-
 unfunction _zsh_plugin_load
 unfunction _omz_library_load

@@ -3,17 +3,13 @@
 # =========================================================
 # Completion system
 # =========================================================
-#
-# Completion is initialized before aliases and plugins so later files can use
-# compdef when needed.
-
+# Initialized before aliases/plugins so later files can use compdef.
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # =========================================================
 # Completion behavior
 # =========================================================
-
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''

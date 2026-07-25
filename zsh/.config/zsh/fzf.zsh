@@ -3,7 +3,6 @@
 # =========================================================
 # fzf
 # =========================================================
-
 if command -v fd >/dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -12,7 +11,6 @@ fi
 # =========================================================
 # UI
 # =========================================================
-
 export FZF_DEFAULT_OPTS='
   --height=60%
   --layout=reverse
@@ -25,7 +23,6 @@ export FZF_DEFAULT_OPTS='
 # =========================================================
 # Preview
 # =========================================================
-
 if command -v bat >/dev/null 2>&1; then
   export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
 elif command -v batcat >/dev/null 2>&1; then
@@ -37,11 +34,8 @@ fi
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 
 # =========================================================
-# Ctrl+F file picker
+# Ctrl+F file picker (excludes hidden files)
 # =========================================================
-#
-# Ctrl+F opens a file picker that excludes hidden files.
-
 _fzf_file_no_hidden() {
   local cmd
   local result

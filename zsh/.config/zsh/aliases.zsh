@@ -3,9 +3,6 @@
 # =========================================================
 # File system
 # =========================================================
-
-# Use eza as the primary ls replacement when available.
-# Falls back to the system ls automatically if eza is not installed.
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza -lh --group-directories-first --icons=auto'
   alias lsa='ls -a'
@@ -15,7 +12,6 @@ if command -v eza >/dev/null 2>&1; then
   alias lta='lt -a'
   alias tree='eza --tree --icons'
 
-  # Reuse ls completions for eza after compinit has loaded compdef.
   if (( $+functions[compdef] )); then
     compdef eza=ls
   fi
@@ -30,9 +26,6 @@ alias -- -='cd -'
 # =========================================================
 # File preview and fuzzy finder
 # =========================================================
-
-# Fuzzy-find a file or path from stdin.
-# Uses bat/batcat for previews when available.
 ff() {
   if ! command -v fzf >/dev/null 2>&1; then
     echo "Error: fzf is not installed" >&2
@@ -48,7 +41,6 @@ ff() {
   fi
 }
 
-# Open the selected fuzzy-find result in the configured editor.
 eff() {
   local file
 
@@ -58,8 +50,6 @@ eff() {
   "${EDITOR:-nvim}" "$file"
 }
 
-# Print files sorted by modified time.
-# Uses GNU find when available, with macOS/BSD stat fallback.
 _recent_files() {
   if find . -type f -printf '' >/dev/null 2>&1; then
     find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2-
@@ -77,7 +67,6 @@ _recent_files() {
   fi
 }
 
-# Select a recent file with fzf and copy it with scp.
 sff() {
   if [[ $# -eq 0 ]]; then
     echo "Usage: sff <destination> (e.g. sff host:/tmp/)" >&2
@@ -95,14 +84,9 @@ sff() {
 # =========================================================
 # Smart directory navigation
 # =========================================================
-
-# Use zoxide-backed cd when zoxide is available.
-# Direct paths still use builtin cd; fuzzy/history jumps use zoxide.
+# zoxide is already initialized in .zshrc, before this file loads,
+# so 'z' exists by the time we get here. Just wire up the alias.
 if command -v zoxide >/dev/null 2>&1; then
-  if ! (( $+functions[z] )); then
-    eval "$(zoxide init zsh)"
-  fi
-
   alias cd='zd'
 
   zd() {
@@ -129,8 +113,6 @@ fi
 # =========================================================
 # Editor
 # =========================================================
-
-# Use Neovim as Vim.
 if command -v nvim >/dev/null 2>&1; then
   alias vim='nvim'
   alias vi='nvim'
@@ -147,20 +129,16 @@ fi
 # =========================================================
 # Core utilities
 # =========================================================
-
-# Use bat as cat when available.
 if command -v bat >/dev/null 2>&1; then
   alias cat='bat'
 elif command -v batcat >/dev/null 2>&1; then
   alias cat='batcat'
 fi
 
-# Use ripgrep as grep when available.
 if command -v rg >/dev/null 2>&1; then
   alias grep='rg --color=auto'
 fi
 
-# Use colored diff only when the system diff supports it.
 if diff --color=auto /dev/null /dev/null >/dev/null 2>&1; then
   alias diff='diff --color=auto'
 fi
@@ -170,23 +148,18 @@ alias df='df -h'
 # =========================================================
 # Tools
 # =========================================================
-
-# Prefer Docker for shortcut
-# Fall back to Podman when Docker is not available
 if command -v docker >/dev/null 2>&1; then
   alias d='docker'
 elif command -v podman >/dev/null 2>&1; then
   alias d='podman'
 fi
 
-# Reverse Docker/Podman as needed
 if command -v podman >/dev/null 2>&1; then
   alias p='podman'
 elif command -v docker >/dev/null 2>&1; then
   alias p='docker'
 fi
 
-# Rails shortcut.
 if command -v rails >/dev/null 2>&1; then
   alias r='rails'
   alias br='bin/rails'
@@ -211,7 +184,6 @@ fi
 # =========================================================
 # Git
 # =========================================================
-
 if command -v git >/dev/null 2>&1; then
   alias g='git'
 

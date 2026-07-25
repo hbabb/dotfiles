@@ -1,22 +1,74 @@
-# ~/.config/zsh/starship.toml
-
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
 scan_timeout = 100
 
-format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$line_break$character"
+format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$python$ruby$zig$line_break$character"
 
 [os]
 disabled = false
 format = "[$symbol](#E95420) "
 
+# This is the default symbols table.
 [os.symbols]
-Ubuntu = "󰕈"
-Arch = "󰣇"
-Macos = ""
-Fedora = ""
-Debian = ""
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
+Alpine = "🏔️ "
+ALTLinux = "Ⓐ "
+Amazon = "🙂 "
+Android = "🤖 "
+AOSC = "🐱 "
+Arch = "🎗️ "
+Artix = "🎗️ "
+Bluefin = "🐟 "
+CachyOS = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Elementary = "🍏 "
+Emscripten = "🔗 "
+EndeavourOS = "🚀 "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜️ "
+HardenedBSD = "🛡️ "
+Illumos = "🐦 "
+Ios = "📱 "
+InstantOS = "⏲️ "
+Kali = "🐉 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = "🍎 "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+Nobara = "🎩 "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+PikaOS = "🐤 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
+Redox = "🧪 "
+Solus = "⛵ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Uos = "🐲 "
+Void = " "
+Windows = "🪟 "
+Zorin = "🔹 "
 
 [directory]
 format = "[$path](cyan) "
@@ -24,7 +76,7 @@ truncation_length = 4
 truncate_to_repo = true
 
 [git_branch]
-symbol = ""
+symbol = ""
 format = "[$symbol $branch](bold purple) "
 
 [git_status]
@@ -39,20 +91,31 @@ deleted = "[✘$count ](bold red)"
 conflicted = "[⚡$count ](bold red)"
 
 [nodejs]
-symbol = ""
+symbol = " "
 format = "[$symbol $version](green) "
 
 [rust]
-symbol = ""
+symbol = "🦀 "
 format = "[$symbol $version](red) "
 
 [golang]
-symbol = ""
-format = "[$symbol $version](cyan) "
+format = 'via [$symbol($version )($mod_version )]($style)'
 
 [php]
-symbol = ""
+symbol = "🐘 "
 format = "[$symbol $version](purple) "
+
+[python]
+symbol = "🐍 "
+format = "[$symbol $version](yellow) "
+
+[ruby]
+symbol = "💎 "
+format = "[$symbol $version](red) "
+
+[zig]
+symbol = "↯ "
+format = "[$symbol $version](yellow)"
 
 [character]
 success_symbol = "[❯](green)"

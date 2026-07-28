@@ -1,0 +1,15 @@
+# ~/.config/mise/config.toml
+
+[tools]
+node = "latest"
+"npm:pnpm" = "latest"
+eza = "latest"
+fd = "latest"
+ripgrep = "latest"
+starship = "latest"
+zoxide = "latest"
+lazygit = "latest"
+lazydocker = "latest"
+fzf = "latest"
+bat = "latest"
+uv = "latest"

@@ -49,7 +49,7 @@ export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 # =========================================================
 # Starship
 # =========================================================
-export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
+# export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 
 # =========================================================
 # Path

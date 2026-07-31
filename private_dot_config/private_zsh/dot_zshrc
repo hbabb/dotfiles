@@ -88,6 +88,13 @@ if [[ -f /usr/share/doc/fzf/examples/completion.zsh ]]; then
 fi
 
 # =========================================================
+# Tool manager
+# =========================================================
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+# =========================================================
 # Modular config files
 # =========================================================
 source_if_exists "$ZDOTDIR/fzf.zsh"
@@ -96,10 +103,3 @@ source_if_exists "$ZDOTDIR/functions.zsh"
 source_if_exists "$ZDOTDIR/bindings.zsh"
 source_if_exists "$ZDOTDIR/plugins.zsh"
 source_if_exists "$ZDOTDIR/prompt.zsh"
-
-# =========================================================
-# Tool manager
-# =========================================================
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
-fi

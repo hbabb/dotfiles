@@ -32,7 +32,7 @@ if status is-interactive
 end
 
 # 1Password ssh agent
-set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
+set -q SSH_AUTH_SOCK; or set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 
 # Starship config location
 # set -gx STARSHIP_CONFIG "$HOME/.config/fish/starship.toml"

@@ -44,7 +44,7 @@ fi
 # =========================================================
 # 1Password SSH agent
 # =========================================================
-export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-$HOME/.1password/agent.sock}"
 
 # =========================================================
 # Starship

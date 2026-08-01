@@ -1,10 +1,10 @@
 # ~/.config/nushell/env.nu
 
 # XDG base directories
-$env.XDG_CONFIG_HOME = ($env | get -i XDG_CONFIG_HOME | default ($env.HOME | path join ".config"))
-$env.XDG_CACHE_HOME = ($env | get -i XDG_CACHE_HOME | default ($env.HOME | path join ".cache"))
-$env.XDG_DATA_HOME = ($env | get -i XDG_DATA_HOME | default ($env.HOME | path join ".local" "share"))
-$env.XDG_STATE_HOME = ($env | get -i XDG_STATE_HOME | default ($env.HOME | path join ".local" "state"))
+$env.XDG_CONFIG_HOME = ($env | get -o XDG_CONFIG_HOME | default ($env.HOME | path join ".config"))
+$env.XDG_CACHE_HOME = ($env | get -o XDG_CACHE_HOME | default ($env.HOME | path join ".cache"))
+$env.XDG_DATA_HOME = ($env | get -o XDG_DATA_HOME | default ($env.HOME | path join ".local" "share"))
+$env.XDG_STATE_HOME = ($env | get -o XDG_STATE_HOME | default ($env.HOME | path join ".local" "state"))
 
 # Editor — computed first, assigned once, outside any block.
 let editor = (
@@ -23,8 +23,8 @@ $env.SUDO_EDITOR = $editor
 
 # Pager
 $env.PAGER = "less"
-$env.BAT_THEME = ($env | get -i BAT_THEME | default "ansi")
-$env.MANROFFOPT = ($env | get -i MANROFFOPT | default "-c")
+$env.BAT_THEME = ($env | get -o BAT_THEME | default "ansi")
+$env.MANROFFOPT = ($env | get -o MANROFFOPT | default "-c")
 
 let manpager = (
     if (which bat | length) > 0 {

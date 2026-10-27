@@ -3,7 +3,7 @@
 -- ABOUT : you may have different global & local leaders
 -- ================================================================================================
 
--- Sett <leader> and <localleader> mappings load before any other files.
+-- Set <leader> and <localleader> mappings load before any other files.
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 

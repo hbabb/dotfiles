@@ -35,6 +35,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local lsp_formatters = {
   toml = "tombi", -- efm has no tombi entry
   templ = "templ", -- the templ language server runs `templ fmt`
+  r = "r_language_server", -- formats with the styler R package
+  rmd = "r_language_server",
+  ruby = "ruby_lsp", -- formats with RuboCop
+  rust = "rust-analyzer", -- formats with rustfmt (started by rustaceanvim)
 }
 
 -- true when a language server with this name is running for this buffer

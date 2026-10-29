@@ -9,26 +9,43 @@
 --- @param capabilities table LSP client capabilities (from nvim-cmp)
 --- @return nil
 return function(capabilities)
+  local fs = require("efmls-configs.fs")
+
   local luacheck = require("efmls-configs.linters.luacheck") -- lua linter
   local stylua = require("efmls-configs.formatters.stylua") -- lua formatter
-  -- local flake8 = require("efmls-configs.linters.flake8") -- python linter
-  -- local black = require("efmls-configs.formatters.black") -- python formatter
   local ruff_lint = require("efmls-configs.linters.ruff") -- python linter
   local ruff_format = require("efmls-configs.formatters.ruff") -- python formatter
-  local pint = require("efmls-configs.formatters.pint") -- php formatter (Laravel)
-  local phpstan = require("efmls-configs.linters.phpstan") -- php linter (uses the project's Larastan when installed)
-  local djlint_lint = require("efmls-configs.linters.djlint") -- django/jinja template linter
-  local djlint_format = require("efmls-configs.formatters.djlint") -- django/jinja template formatter
+  local djlint_lint = require("efmls-configs.linters.djlint") -- jinja (flask) template linter
+  local djlint_format = require("efmls-configs.formatters.djlint") -- jinja (flask) template formatter
   local go_revive = require("efmls-configs.linters.go_revive") -- go linter
   local gofumpt = require("efmls-configs.formatters.gofumpt") -- go formatter
-  local prettier_d = require("efmls-configs.formatters.prettier_d") -- ts/js/solidity/json/docker/html/css/react/svelte/vue/yaml formatter
-  local eslint_d = require("efmls-configs.linters.eslint_d") -- ts/js/solidity/json/react/svelte/vue linter
+  local prettier_d = require("efmls-configs.formatters.prettier_d") -- ts/js/json/docker/html/css/react/svelte/vue/yaml formatter
+  local eslint_d = require("efmls-configs.linters.eslint_d") -- ts/js/json/react/svelte/vue linter
   local fixjson = require("efmls-configs.formatters.fixjson") -- json formatter
   local shellcheck = require("efmls-configs.linters.shellcheck") -- bash linter
   local shfmt = require("efmls-configs.formatters.shfmt") -- bash formatter
+  local fish_indent = require("efmls-configs.formatters.fish_indent") -- fish formatter (comes with fish)
   local hadolint = require("efmls-configs.linters.hadolint") -- docker linter
   local cpplint = require("efmls-configs.linters.cpplint") -- c/cpp linter
   local clangformat = require("efmls-configs.formatters.clang_format") -- c/cpp formatter
+
+  -- SQL (sqlite, postgres/postgis, mysql): sqlfluff reads the dialect and style from the
+  -- project's .sqlfluff file, falling back to ~/.config/sqlfluff/.sqlfluff.
+  -- efmls-configs' own sqlfluff entries force "--dialect ansi", so these leave that out.
+  local sqlfluff = fs.executable("sqlfluff")
+  local sqlfluff_lint = {
+    prefix = "sqlfluff",
+    lintCommand = sqlfluff
+      .. " lint --format github-annotation-native --annotation-level warning --nocolor --disable-progress-bar '${INPUT}'",
+    lintIgnoreExitCode = true,
+    lintStdin = false, -- lints the saved file, so results update on save
+    lintFormats = require("efmls-configs.linters.sqlfluff").lintFormats,
+  }
+  local sqlfluff_format = {
+    formatCommand = sqlfluff
+      .. " format --nocolor --disable-progress-bar --stdin-filename '${INPUT}' -",
+    formatStdin = true,
+  }
 
   vim.lsp.config("efm", {
     capabilities = capabilities,
@@ -37,6 +54,7 @@ return function(capabilities)
       "cpp",
       "css",
       "docker",
+      "fish",
       "go",
       "html",
       "htmldjango",
@@ -47,9 +65,9 @@ return function(capabilities)
       "jsonc",
       "lua",
       "markdown",
-      "php",
       "python",
       "sh",
+      "sql",
       "svelte",
       "typescript",
       "typescriptreact",
@@ -70,6 +88,7 @@ return function(capabilities)
         cpp = { clangformat, cpplint },
         css = { prettier_d },
         docker = { hadolint, prettier_d },
+        fish = { fish_indent },
         go = { gofumpt, go_revive },
         html = { prettier_d },
         htmldjango = { djlint_lint, djlint_format },
@@ -80,9 +99,9 @@ return function(capabilities)
         jsonc = { eslint_d, fixjson },
         lua = { luacheck, stylua },
         markdown = { prettier_d },
-        php = { pint, phpstan },
         python = { ruff_lint, ruff_format },
         sh = { shellcheck, shfmt },
+        sql = { sqlfluff_lint, sqlfluff_format },
         svelte = { eslint_d, prettier_d },
         typescript = { eslint_d, prettier_d },
         typescriptreact = { eslint_d, prettier_d },

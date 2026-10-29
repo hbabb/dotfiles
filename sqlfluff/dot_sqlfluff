@@ -1,0 +1,5 @@
+[sqlfluff]
+# Fallback SQL dialect for files outside a project.
+# Each project sets its own dialect in a .sqlfluff file (postgres, sqlite, mysql, ...)
+# which takes priority over this one.
+dialect = ansi

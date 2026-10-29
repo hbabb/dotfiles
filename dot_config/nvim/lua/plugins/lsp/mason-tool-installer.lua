@@ -7,70 +7,79 @@
 -- ================================================================================================
 
 return {
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	dependencies = { "mason-org/mason.nvim" },
-	opts = {
-		ensure_installed = {
-			-- runs the formatters and linters below
-			"efm",
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
+  dependencies = { "mason-org/mason.nvim" },
+  opts = {
+    ensure_installed = {
+      -- runs the formatters and linters below
+      "efm",
 
-			-- Lua (your Neovim config)
-			"lua-language-server",
-			"stylua",
-			"luacheck",
+      -- Lua (your Neovim config)
+      "lua-language-server",
+      "stylua",
+      "luacheck",
 
-			-- Python
-			"pyright",
-			-- "flake8",
-			-- "black",
-			"ruff",
-			"debugpy", -- Python debugger
+      -- Go
+      "gopls",
+      "gofumpt",
+      "revive",
+      "templ",
 
-			-- Go
-			"gopls",
-			"gofumpt",
-			"revive",
-			"templ",
+      -- Python
+      "pyright",
+      "ruff",
+      "debugpy", -- Python debugger
 
-			-- TypeScript / JavaScript / React
-			"typescript-language-server",
-			"eslint_d",
-			"prettierd",
+      -- TypeScript / JavaScript / React
+      "typescript-language-server",
+      "eslint_d",
+      "prettierd",
 
-			-- HTML / CSS / Tailwind
-			"emmet-ls",
-			"tailwindcss-language-server",
+      -- R (needs R installed)
+      "r-languageserver",
 
-			-- JSON / YAML
-			"json-lsp",
-			"fixjson",
-			"yaml-language-server",
+      -- Ruby
+      "ruby-lsp",
 
-			-- Bash
-			"bash-language-server",
-			"shellcheck",
-			"shfmt",
+      -- C / C++
+      "clangd",
+      "clang-format",
+      "cpplint",
 
-			-- Docker
-			"dockerfile-language-server",
-			"hadolint",
+      -- Bash
+      "bash-language-server",
+      "shellcheck",
+      "shfmt",
 
-			-- PHP / Laravel
-			"phpactor",
-			"laravel_lsp",
-			"pint",
-			"phpstan",
-			"php-debug-adapter",
+      -- Fish (fish_indent comes with fish)
+      "fish-lsp",
 
-			-- Django / Flask templates, HTMX
-			"djlint",
-			"htmx-lsp",
+      -- SQL (sqlite, postgres/postgis, mysql)
+      "sqlfluff",
+      "postgres-language-server",
 
-			-- TOML
-			"tombi",
-			"pyproject-fmt",
-		},
-		auto_update = true, -- update listed tools when a new version is out
-		run_on_start = true, -- check every time Neovim starts
-	},
+      -- HTML / CSS / Tailwind / HTMX
+      "emmet-ls",
+      "tailwindcss-language-server",
+      "htmx-lsp",
+
+      -- Flask / Jinja templates
+      "djlint",
+
+      -- JSON / YAML
+      "json-lsp",
+      "fixjson",
+      "yaml-language-server",
+
+      -- TOML
+      "tombi",
+      "pyproject-fmt",
+
+      -- Docker
+      "dockerfile-language-server",
+      "hadolint",
+    },
+    auto_update = true, -- update listed tools when a new version is out
+    run_on_start = true, -- check every time Neovim starts
+  },
 }

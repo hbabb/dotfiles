@@ -1,4 +1,4 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities() -- what the completion menu supports
 
 -- Language Server Protocol (LSP)
 require("servers.lua_ls")(capabilities) -- Lua (this Neovim config)

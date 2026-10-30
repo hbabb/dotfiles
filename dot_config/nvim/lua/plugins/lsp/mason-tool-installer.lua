@@ -24,6 +24,7 @@ return {
       "gofumpt",
       "revive",
       "templ",
+      "gotestsum", -- Go test runner used by neotest
 
       -- Python
       "pyright",

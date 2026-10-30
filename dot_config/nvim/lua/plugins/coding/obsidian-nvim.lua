@@ -7,7 +7,7 @@
 --   > github : https://github.com/obsidian-nvim/obsidian.nvim
 -- ================================================================================================
 
-local vault = vim.fn.expand("~/Documents/Notes")
+local vault = vim.fn.expand("~/Documents/MemoryCore")
 
 return {
   "obsidian-nvim/obsidian.nvim",

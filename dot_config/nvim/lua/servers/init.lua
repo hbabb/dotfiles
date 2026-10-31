@@ -5,7 +5,9 @@ require("servers.lua_ls")(capabilities) -- Lua (this Neovim config)
 require("servers.gopls")(capabilities) -- Go
 require("servers.templ")(capabilities) -- Go templ
 require("servers.pyright")(capabilities) -- Python
-require("servers.ts_ls")(capabilities) -- TypeScript / JavaScript
+require("servers.ts_ls")(capabilities) -- TypeScript / JavaScript / React
+require("servers.vue_ls")(capabilities) -- Vue
+require("servers.svelte")(capabilities) -- Svelte
 require("servers.r_language_server")(capabilities) -- R
 require("servers.ruby_lsp")(capabilities) -- Ruby
 require("servers.clangd")(capabilities) -- C / C++
@@ -31,6 +33,8 @@ vim.lsp.enable({
   "templ",
   "pyright",
   "ts_ls",
+  "vue_ls",
+  "svelte",
   "r_language_server",
   "ruby_lsp",
   "clangd",

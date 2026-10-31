@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Load zsh options, keybindings, and completion
-# Replaced by load-omarchy.zsh, which loads this same file but skips
+# Replaced by zoptions.zsh, which loads this same file but skips
 # zsh-syntax-highlighting and compinit (Oh My Zsh runs compinit in omz.zsh)
 # [[ -f /usr/share/omarchy-zsh/shell/zoptions ]] && source /usr/share/omarchy-zsh/shell/zoptions
 source ~/.config/zsh/zoptions.zsh

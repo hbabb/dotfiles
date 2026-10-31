@@ -8,6 +8,9 @@
 # History
 # =========================================================
 
+# zsh won't create the folder for the history file, so make it
+# here if it's missing (a new machine won't have it yet)
+[[ -d "$XDG_STATE_HOME/zsh" ]] || mkdir -p "$XDG_STATE_HOME/zsh"
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000

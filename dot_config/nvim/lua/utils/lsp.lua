@@ -79,16 +79,13 @@ M.on_attach = function(event)
 	lmap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, "C[a]lls Outgoing", "callHierarchy/outgoingCalls")
   -- stylua: ignore end
 
-  -- fzf-lua keymaps
-  keymap("n", "<leader>fd", "<cmd>FzfLua lsp_finder<CR>", opts) -- LSP Finder (definition + references)
-  -- CONFLICT: LazyVim <leader>fr = Recent files
-  -- keymap("n", "<leader>fr", "<cmd>FzfLua lsp_references<CR>", opts) -- Show all references to the symbol under the cursor
-  -- CONFLICT: LazyVim <leader>ft = Terminal (Root Dir)
-  -- keymap("n", "<leader>ft", "<cmd>FzfLua lsp_typedefs<CR>", opts) -- Jump to the type definition of the symbol under the cursor
-  -- CONFLICT: fzf-lua.lua has this set already
-  -- keymap("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", opts) -- List all symbols (functions, classes, etc.) in the current file
-  keymap("n", "<leader>fw", "<cmd>FzfLua lsp_workspace_symbols<CR>", opts) -- Search for any symbol across the entire project/workspace
-  keymap("n", "<leader>fi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- Go to implementation
+  -- your <leader>f keys (were fzf-lua, now Snacks)
+  -- stylua: ignore start
+  lmap("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, "Symbols (file)", "textDocument/documentSymbol")
+  lmap("n", "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, "Symbols (project)", "workspace/symbol")
+  lmap("n", "<leader>fw", function() Snacks.picker.lsp_workspace_symbols() end, "Symbols (project)", "workspace/symbol")
+  lmap("n", "<leader>fi", function() Snacks.picker.lsp_implementations() end, "Implementations", "textDocument/implementation")
+  -- stylua: ignore end
 
   -- Order Imports (if supported by the client LSP)
   -- CONFLICT: `<leader>oi` is the same as `<leader>co` set above. This also frees up `o` for the Obsidian plugin.

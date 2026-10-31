@@ -16,7 +16,6 @@ return {
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       { path = "snacks.nvim", words = { "Snacks" } },
       { path = "mini.trailspace", words = { "MiniTrailspace" } },
-      { path = "mini.files", words = { "MiniFiles" } },
       { path = "bufferline.nvim", words = { "nvim_bufferline" } },
       { path = "nvim-lspconfig", words = { "lspconfig.settings" } },
     },

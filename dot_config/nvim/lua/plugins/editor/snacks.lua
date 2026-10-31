@@ -34,9 +34,10 @@ end
 -- Terminal Mappings
 local function term_nav(dir)
   return function(self)
-    return self:is_floating() and "<c-" .. dir .. ">" or vim.schedule(function()
-      vim.cmd.wincmd(dir)
-    end)
+    return self:is_floating() and "<c-" .. dir .. ">"
+      or vim.schedule(function()
+        vim.cmd.wincmd(dir)
+      end)
   end
 end
 
@@ -73,6 +74,13 @@ return {
       },
     },
     picker = {
+      -- show hidden files (dotfiles) in the file finder, text search and explorer.
+      -- .gitignore'd files stay hidden, and the explorer skips the .git folder.
+      sources = {
+        files = { hidden = true },
+        grep = { hidden = true },
+        explorer = { hidden = true, exclude = { ".git" } },
+      },
       win = {
         input = {
           keys = {
@@ -161,6 +169,9 @@ return {
     { "<leader>fr",      function() Snacks.picker.recent() end,                                    desc = "Recent" },
     { "<leader>fR",      function() Snacks.picker.recent({ filter = { cwd = true } }) end,         desc = "Recent (cwd)" },
     { "<leader>fp",      function() Snacks.picker.projects() end,                                  desc = "Projects" },
+    { "<leader>fh",      function() Snacks.picker.help() end,                                      desc = "Help Pages" },
+    { "<leader>fx",      function() Snacks.picker.diagnostics_buffer() end,                        desc = "Diagnostics (file)" },
+    { "<leader>fX",      function() Snacks.picker.diagnostics() end,                               desc = "Diagnostics (project)" },
     -- git
     { "<leader>gd",      function() Snacks.picker.git_diff() end,                                  desc = "Git Diff (hunks)" },
     { "<leader>gD",      function() Snacks.picker.git_diff({ base = "origin", group = true }) end, desc = "Git Diff (origin)" },

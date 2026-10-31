@@ -1,19 +1,19 @@
 -- ================================================================================================
 -- TITLE : mini.nvim
+-- ABOUT : Library of 40+ independent Lua modules. Each one below is installed on its own.
 -- LINKS :
---   > github : https://github.com/echasnovski/mini.nvim
--- ABOUT : Library of 40+ independent Lua modules.
+--   > github : https://github.com/nvim-mini/mini.nvim
 -- ================================================================================================
 
 return {
-  { "echasnovski/mini.ai", version = "*", opts = {} },
+  { "nvim-mini/mini.ai", version = "*", opts = {} },
   -- CONFLICT: action is built in to Neovim v0.10+
-  -- { "echasnovski/mini.comment", version = "*", opts = {} },
-  { "echasnovski/mini.move", version = "*", opts = {} },
+  -- { "nvim-mini/mini.comment", version = "*", opts = {} },
+  { "nvim-mini/mini.move", version = "*", opts = {} },
   -- CONFLICT: mini.surround uses "s", which LazyVim gives to flash. LazyVim's mini.surround uses "gs".
-  -- { "echasnovski/mini.surround", version = "*", opts = {} },
+  -- { "nvim-mini/mini.surround", version = "*", opts = {} },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     version = "*",
     opts = {
       mappings = {
@@ -27,12 +27,12 @@ return {
       },
     },
   },
-  { "echasnovski/mini.cursorword", version = "*", opts = {} },
+  { "nvim-mini/mini.cursorword", version = "*", opts = {} },
   -- CONFLICT: LazyVim uses snacks indent/scope ([i ]i ii ai), which these keys collide with
-  -- { "echasnovski/mini.indentscope", version = "*", opts = {} },
-  { "echasnovski/mini.pairs", version = "*", opts = {} },
+  -- { "nvim-mini/mini.indentscope", version = "*", opts = {} },
+  { "nvim-mini/mini.pairs", version = "*", opts = {} },
   {
-    "echasnovski/mini.trailspace",
+    "nvim-mini/mini.trailspace",
     version = "*",
     opts = {},
     init = function()
@@ -49,7 +49,6 @@ return {
       })
     end,
   },
-  { "echasnovski/mini.bufremove", version = "*", opts = {} },
   -- CONFLICT: LazyVim uses noice + snacks notifier for notifications
-  -- { "echasnovski/mini.notify", version = "*", opts = {} },
+  -- { "nvim-mini/mini.notify", version = "*", opts = {} },
 }

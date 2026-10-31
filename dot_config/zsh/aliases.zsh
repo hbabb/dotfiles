@@ -113,6 +113,7 @@ sff() {
 }
 
 lf() { # zsh follow lf navigation
+    local tmp dir
     tmp=$(mktemp)
     command lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -200,6 +201,8 @@ if command -v sfw >/dev/null 2>&1; then
   alias bunx="sfw bunx"
   alias nub="sfw nub"
   alias nubx="sfw nubx"
+  alias cargo="sfw cargo"
+  alias uv="sfw uv"
 fi
 
 # =========================================================
@@ -222,7 +225,6 @@ if command -v git >/dev/null 2>&1; then
 
   alias glog='GIT_PAGER="less -F -X" git log'                                   # -F quit if one screen, -X no clear on exit
   alias gl='GIT_PAGER="less -F -X" git log --all --decorate --oneline --graph'
-  alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 fi
 
 if command -v lazygit >/dev/null 2>&1; then

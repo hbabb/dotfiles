@@ -61,11 +61,5 @@ require("lazy").setup({
       },
     },
   },
-  install = {
-    colorscheme = {
-      "melange",
-      "nightfox",
-    },
-  },
   checker = { enabled = true },
 })

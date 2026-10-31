@@ -55,13 +55,6 @@ fi
 export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-$HOME/.1password/agent.sock}"
 
 # =========================================================
-# Starship
-# =========================================================
-# ZDOTDIR is no longer set, so point at the repo folder directly
-# export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/zsh/starship.toml"
-
-# =========================================================
 # Path
 # =========================================================
 # Omarchy appends ~/.local/bin; this puts it first and removes duplicates

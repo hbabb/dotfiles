@@ -1,0 +1,86 @@
+# See https://git-scm.com/docs/git-config
+
+# Default Omarchy settings
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+  # My set are below
+  sw = switch
+  lg = log --oneline --decorate --graph --all --parents
+
+[init]
+	defaultBranch = main    # Omarchy sets to master but I set to main because of boot.dev courses
+
+[pull]
+	rebase = true 			     # Rebase (instead of merge) on pull
+
+[push]
+  default = simple         # My custom setting - NOT from Omarchy
+	autoSetupRemote = true   # Automatically set upstream branch on push
+
+[diff]
+	algorithm = histogram    # Clearer diffs on moved/edited lines
+	colorMoved = plain       # Highlight moved blocks in diffs
+	mnemonicPrefix = true    # More intuitive refs in diff output
+
+[commit]
+	verbose = true           # Include diff comment in commit message template
+
+[column]
+	ui = auto 			         # Output in columns when possible
+
+[branch]
+	sort = -committerdate    # Sort branches by most recent commit first
+
+[tag]
+	sort = -version:refname  # Sort version numbers as you would expect
+
+[rerere]
+	enabled = true           # Record and reuse conflict resolutions
+	autoupdate = true        # Apply stored conflict resolutions automatically
+
+[user]
+	name = Heath Babb
+	email = hbabb@hey.com
+  # useConfigOnly = tree  # From my dotfiles
+
+# My custom settings
+[core]
+  editor = nvim
+  autocrlf = input
+  safecrlf = warn
+  excludesfile = ~/.config/git/ignore
+
+[fetch]
+  prune = true
+
+[merge]
+  conflictStyle = zdiff3
+
+[rebase]
+  autoSquash = true
+
+[status]
+  branch = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+# Setting up git sighning
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIADCsQIvGBdM+rnm16y1ziLKZhlytGSuryz1Q2G1wAsW
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+

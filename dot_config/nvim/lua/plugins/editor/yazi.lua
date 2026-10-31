@@ -8,23 +8,23 @@
 -- ================================================================================================
 
 return {
-	"mikavilpas/yazi.nvim",
-	version = "*", -- use the latest stable version
-	event = "VeryLazy",
-	dependencies = {
-		{ "nvim-lua/plenary.nvim", lazy = true },
-	},
-	keys = {
-		-- yazi.nvim's suggested keys clash with LazyVim's:
-		--   <leader>-  is Split Window Below
-		--   <c-up>     is Increase Window Height
-		{ "<leader>y", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Yazi (current file)" },
-		{ "<leader>Y", "<cmd>Yazi cwd<cr>", desc = "Yazi (cwd)" },
-	},
-	opts = {
-		open_for_directories = false,
-		keymaps = {
-			show_help = "<f1>",
-		},
-	},
+  "mikavilpas/yazi.nvim",
+  version = "*", -- use the latest stable version
+  event = "VeryLazy",
+  dependencies = {
+    { "nvim-lua/plenary.nvim", lazy = true },
+  },
+  keys = {
+    -- yazi.nvim's suggested keys clash with LazyVim's:
+    --   <leader>-  is Split Window Below
+    --   <c-up>     is Increase Window Height
+    { "<leader>y", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Yazi (current file)" },
+    { "<leader>Y", "<cmd>Yazi cwd<cr>", desc = "Yazi (cwd)" },
+  },
+  opts = {
+    open_for_directories = false,
+    keymaps = {
+      show_help = "<f1>",
+    },
+  },
 }

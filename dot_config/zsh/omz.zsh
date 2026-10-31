@@ -18,12 +18,7 @@ export ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
 # Empty = no Oh My Zsh theme; Starship draws the prompt
 # ZSH_THEME=""
 # Oh My Zsh's default theme; change the name to use a different one
-ZSH_THEME="bira"
-
-# Turn off Starship (Omarchy's setup starts it before this file loads)
-add-zsh-hook -d precmd prompt_starship_precmd
-add-zsh-hook -d preexec prompt_starship_preexec
-RPROMPT=''
+ZSH_THEME=""
 
 plugins=(git jj)
 

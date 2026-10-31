@@ -1,0 +1,232 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+# =========================================================
+# Layout
+# Line 1: system, location, version control, status
+# Line 2: input
+#
+# Only the modules listed here are drawn. Language runtimes
+# (node, go, rust, ...) aren't listed, so they never appear.
+# =========================================================
+format = """
+$os\
+$shell\
+$hostname\
+$container\
+$directory\
+$vcs\
+$python\
+$cmd_duration\
+$jobs\
+$sudo\
+$status\
+$line_break\
+$character"""
+
+add_newline = true
+
+# =========================================================
+# Colors
+# Color names only (no hex codes), so they come from the
+# terminal palette that Omarchy sets from the current theme.
+# No bold and no bright- colors, except bright-black, which
+# is the theme's muted gray.
+# =========================================================
+
+# =========================================================
+# System
+# =========================================================
+[os]
+    disabled = false
+    format = "[$symbol]($style)"
+    style = "blue"
+
+    # Nerd Font OS icons, from starship's Nerd Font Symbols preset
+    [os.symbols]
+        AIX = " "
+        AlmaLinux = " "
+        Alpaquita = " "
+        Alpine = " "
+        ALTLinux = " "
+        Amazon = " "
+        Android = " "
+        AOSC = " "
+        Arch = " "
+        Artix = " "
+        Bazzite = " "
+        Bluefin = " "
+        CachyOS = " "
+        CentOS = " "
+        Debian = " "
+        DragonFly = " "
+        Elementary = " "
+        Emscripten = " "
+        EndeavourOS = " "
+        Fedora = " "
+        FreeBSD = " "
+        Garuda = " "
+        Gentoo = " "
+        HardenedBSD = "󰞌 "
+        Hurd = " "
+        Illumos = " "
+        InstantOS = " "
+        Ios = "󰀷 "
+        Kali = " "
+        KDENeon = " "
+        Linux = " "
+        Mabox = " "
+        Macos = " "
+        Manjaro = " "
+        Mariner = " "
+        MidnightBSD = " "
+        Mint = " "
+        NetBSD = " "
+        NixOS = " "
+        Nobara = " "
+        OpenBSD = " "
+        OpenCloudOS = " "
+        openEuler = " "
+        openSUSE = " "
+        OracleLinux = "󰺡 "
+        PikaOS = " "
+        Pop = " "
+        Raspbian = " "
+        Redhat = "󱄛 "
+        RedHatEnterprise = "󱄛 "
+        Redox = "󰀘 "
+        RockyLinux = " "
+        Solus = " "
+        SUSE = " "
+        Ubuntu = " "
+        Ultramarine = " "
+        Unknown = " "
+        Uos = " "
+        Void = " "
+        Windows = "󰍲 "
+        Zorin = " "
+
+[shell]
+    disabled = false
+    format = "[$indicator]($style) "
+    style = "bright-black"
+    bash_indicator = "bash"
+    zsh_indicator = "zsh"
+    fish_indicator = "fish"
+
+# Only shown over SSH
+[hostname]
+    ssh_only = true
+    ssh_symbol = " "
+    format = "[$ssh_symbol$hostname]($style) in "
+    style = "green"
+
+[container]
+    symbol = " "
+    format = '[$symbol \[$name\]]($style) '
+    style = "yellow"
+
+# =========================================================
+# Path
+# =========================================================
+[directory]
+    truncation_length = 3
+    truncation_symbol = "…/"
+    read_only = " 󰌾"
+    format = "[$path]($style)[$read_only]($read_only_style) "
+    style = "cyan"
+    read_only_style = "red"
+
+# =========================================================
+# Version control
+# jj first: in a repo with both .jj and .git, jj wins.
+# git modules only show in plain git repos.
+# =========================================================
+[vcs]
+    order = ["jj", "git"]
+
+[jj_bookmark]
+    symbol = " "
+    style = "purple"
+
+[jj_change]
+    prefix_style = "green"
+    suffix_style = "bright-black"
+    change_offset_style = "yellow"
+
+[jj_metrics]
+    added_style = "green"
+    deleted_style = "red"
+
+[jj_status]
+    style = "red"
+
+[git_branch]
+    symbol = " "
+    style = "purple"
+
+[git_commit]
+    tag_symbol = "  "
+    style = "green"
+
+[git_state]
+    style = "yellow"
+
+[git_metrics]
+    added_style = "green"
+    deleted_style = "red"
+
+[git_status]
+    style = "red"
+
+# =========================================================
+# Python
+# Only shown while a virtual environment is active
+# (no file-based triggers). Shows the env name, no version.
+# =========================================================
+[python]
+    symbol = " "
+    format = 'via [$symbol(\($virtualenv\) )]($style)'
+    style = "yellow"
+    detect_extensions = []
+    detect_files = []
+    detect_folders = []
+
+    # =========================================================
+    # Status info (each one hidden until it has something to show)
+    # =========================================================
+
+# Shown when a command takes longer than 2 seconds
+[cmd_duration]
+    format = "took [$duration]($style) "
+    style = "yellow"
+
+# Shown when jobs are running in the background
+[jobs]
+    style = "blue"
+
+# Shown while sudo has your password cached
+[sudo]
+    disabled = false
+    symbol = " "
+    format = "[as $symbol]($style) "
+    style = "blue"
+
+# Exit code, shown only when the last command failed
+[status]
+    disabled = false
+    symbol = " "
+    format = "[$symbol$status]($style) "
+    style = "red"
+
+# =========================================================
+# Input line
+# ❯ normally, ✗ after a failed command
+# ❮ in vi normal mode (omarchy-fish turns vi mode on)
+# =========================================================
+[character]
+    success_symbol = "[❯](cyan)"
+    error_symbol = "[✗](red)"
+    vimcmd_symbol = "[❮](green)"
+    vimcmd_visual_symbol = "[❮](yellow)"
+    vimcmd_replace_symbol = "[❮](purple)"
+    vimcmd_replace_one_symbol = "[❮](purple)"

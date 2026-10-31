@@ -25,6 +25,7 @@ return {
       "revive",
       "templ",
       "gotestsum", -- Go test runner used by neotest
+      "delve", -- Go debugger
 
       -- Python
       "pyright",

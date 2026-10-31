@@ -4,7 +4,7 @@
 --   > github: https://github.com/nushell/nushell
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   -- the language server is built into nu (`nu --lsp`), so there is nothing to install

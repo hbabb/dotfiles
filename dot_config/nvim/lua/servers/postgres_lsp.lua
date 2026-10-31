@@ -4,7 +4,7 @@
 --   > website: https://pg-language-server.com
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   -- only starts in projects that have a postgres-language-server.jsonc file (nvim-lspconfig sets

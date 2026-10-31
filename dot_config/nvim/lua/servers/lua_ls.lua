@@ -1,27 +1,22 @@
 -- ================================================================================================
 -- TITLE : lua_ls (Lua Language Server) LSP Setup
+-- ABOUT : lazydev.nvim (plugins/lsp/lazydev.lua) tells lua_ls where Neovim's and the
+--         plugins' code is.
 -- LINKS :
---   > github: https://github.com/LuaLS/lua-language-server
+--   > github : https://github.com/LuaLS/lua-language-server
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (typically from nvim-cmp or similar)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
-	vim.lsp.config('lua_ls', {
-		capabilities = capabilities,
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-        -- lazydev.nvim (plugins/lazydev.lua) now  tells lua_ls where Neovim's and the plugins' code is
-				-- workspace = {
-					-- library = {
-						-- vim.fn.expand("$VIMRUNTIME/lua"),
-						-- vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
-					-- },
-				-- },
-			},
-		},
-	})
+  vim.lsp.config("lua_ls", {
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+      },
+    },
+  })
 end

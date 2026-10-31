@@ -5,7 +5,7 @@
 --   > settings: https://github.com/microsoft/pyright/blob/main/docs/settings.md
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   vim.lsp.config("pyright", {

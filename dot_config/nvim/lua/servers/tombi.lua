@@ -1,14 +1,13 @@
 -- ================================================================================================
 -- TITLE : tombi (TOML Language Server) LSP Setup
 -- LINKS :
---   > github: https://github.com/tombi-toml/tombi
+--   > github : https://github.com/tombi-toml/tombi
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (typically from nvim-cmp or similar)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
-	vim.lsp.config("tombi", {
-		capabilities = capabilities,
-		filetypes = { "toml" },
-	})
+  vim.lsp.config("tombi", {
+    capabilities = capabilities,
+  })
 end

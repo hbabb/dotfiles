@@ -1,0 +1,14 @@
+# =================================================================================================
+# tombi (TOML formatter/language server) user-level settings used when a project has no tombi.toml
+# or [tool.tombi] of its own.
+# =================================================================================================
+
+[format.rules]
+    # Use spaces for indent style
+    indent-style = "space"
+    # Indent the keys under a [table.sub]
+    indent-sub-tables = true
+    # Indent the keys under a [table] header
+    indent-table-key-value-pairs = true
+    # 4 spaces per indent level
+    indent-width = 4

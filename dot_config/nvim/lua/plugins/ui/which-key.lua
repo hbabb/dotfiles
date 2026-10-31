@@ -1,3 +1,11 @@
+-- ================================================================================================
+-- TITLE : which-key.nvim
+-- ABOUT : Shows the keys you can press next, with their descriptions (LazyVim's spec).
+--         The groups below give each <leader> prefix a name in the popup.
+-- LINKS :
+--   > github : https://github.com/folke/which-key.nvim
+-- ================================================================================================
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
@@ -13,6 +21,7 @@ return {
         { "<leader>f", group = "file/find" },
         { "<leader>g", group = "git" },
         { "<leader>gh", group = "hunks" },
+        { "<leader>o", group = "obsidian" },
         { "<leader>q", group = "quit/session" },
         { "<leader>s", group = "search" },
         { "<leader>u", group = "ui" },

@@ -7,6 +7,9 @@ My config files for [Omarchy](https://omarchy.org), managed with [chezmoi](https
 | Folder                                                       | What it is                                                                                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | [`dot_config/nvim`](dot_config/nvim)                         | My Neovim setup: plain lazy.nvim, one file per plugin, LazyVim's look and keymaps. See its [README](dot_config/nvim/README.md). |
+| [`dot_config/git`](dot_config/git)                           | My git config.                                                                                                                  |
+| [`dot_config/private_jj`](dot_config/private_jj)             | My jj config. `private_` makes chezmoi install it as `~/.config/jj` readable only by me.                                        |
+| [`dot_config/tmux`](dot_config/tmux)                         | My tmux config, with TPM for plugins. Prefix is `Ctrl+b`.                                                                       |
 | [`dot_config/sqlfluff`](dot_config/sqlfluff)                 | Fallback SQL lint/format settings (ANSI dialect) for projects that don't have their own `.sqlfluff`.                            |
 | [`dot_zshrc`](dot_zshrc), [`dot_config/zsh`](dot_config/zsh) | My zsh setup: Omarchy's zsh config plus my own files, one per topic, with Oh My Zsh. `.zshrc` loads them in order.              |
 

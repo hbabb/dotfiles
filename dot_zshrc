@@ -1,0 +1,28 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Load zsh options, keybindings, and completion
+# Replaced by load-omarchy.zsh, which loads this same file but skips
+# zsh-syntax-highlighting and compinit (Oh My Zsh runs compinit in omz.zsh)
+# [[ -f /usr/share/omarchy-zsh/shell/zoptions ]] && source /usr/share/omarchy-zsh/shell/zoptions
+source ~/.config/zsh/zoptions.zsh
+
+# Load shared shell configuration (aliases, functions, environment, tool init)
+[[ -f /usr/share/omarchy-zsh/shell/all ]] && source /usr/share/omarchy-zsh/shell/all
+
+# Add your own customizations below
+#
+# Make an alias for invoking commands you use constantly
+# alias p='python'
+# alias cx="claude --permission-mode=plan --allow-dangerously-skip-permissions"
+
+source ~/.config/zsh/envs.zsh
+source ~/.config/zsh/options.zsh
+source ~/.config/zsh/prompt.zsh
+source ~/.config/zsh/fzf.zsh
+source ~/.config/zsh/omz.zsh
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/plugins.zsh
+source ~/.config/zsh/bindings.zsh
+source ~/.config/zsh/atuin.zsh
+[[ -f ~/.config/zsh/local.zsh ]] && source ~/.config/zsh/local.zsh

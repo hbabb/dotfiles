@@ -44,6 +44,7 @@ return {
       "bash",
       "fish",
       "nu",
+      "zsh",
       -- Data / config
       "sql",
       "json",

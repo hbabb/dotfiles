@@ -10,8 +10,8 @@
 # isn't in the download, so omz.zsh keeps Oh My Zsh's cache in
 # ~/.cache/oh-my-zsh instead.
 [".oh-my-zsh"]
-type = "archive"
-url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

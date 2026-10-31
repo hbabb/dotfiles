@@ -1,0 +1,18 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+default-command = "log"
+show-cryptographic-signatures = true
+
+[user]
+name = "Heath Babb"
+email = "hbabb@hey.com"
+
+[signing]
+behavior = "drop"
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIADCsQIvGBdM+rnm16y1ziLKZhlytGSuryz1Q2G1wAsW"
+backends.ssh.allowed-signers = "~/.ssh/allowed_signers"
+
+[git]
+sign-on-push = true

@@ -1,3 +1,10 @@
+-- ================================================================================================
+-- TITLE : lsp
+-- ABOUT : Keymaps for language-server features. Runs each time a server attaches to a file
+--         (the LspAttach autocmd in config/autocmds.lua), so these keys only exist where a
+--         server is running.
+-- ================================================================================================
+
 local M = {}
 
 M.on_attach = function(event)
@@ -45,38 +52,38 @@ M.on_attach = function(event)
     end
     keymap(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
-	-- stylua: ignore start
-	lmap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
-	lmap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition", "textDocument/definition")
-	keymap("n", "grr", function() Snacks.picker.lsp_references() end, { buffer = bufnr, nowait = true, desc = "References" })
-	lmap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
-	lmap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
-	lmap("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
-	lmap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
-	lmap("n", "gK", function() return vim.lsp.buf.signature_help() end, "Signature Help", "textDocument/signatureHelp")
-	lmap("i", "<c-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help", "textDocument/signatureHelp")
-	lmap({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action", "textDocument/codeAction")
-	lmap({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", "textDocument/codeLens")
-	-- lmap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens", "textDocument/codeLens")
+  -- stylua: ignore start
+  lmap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+  lmap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition", "textDocument/definition")
+  keymap("n", "grr", function() Snacks.picker.lsp_references() end, { buffer = bufnr, nowait = true, desc = "References" })
+  lmap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+  lmap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+  lmap("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+  lmap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
+  lmap("n", "gK", function() return vim.lsp.buf.signature_help() end, "Signature Help", "textDocument/signatureHelp")
+  lmap("i", "<c-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help", "textDocument/signatureHelp")
+  lmap({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action", "textDocument/codeAction")
+  lmap({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", "textDocument/codeLens")
+  -- lmap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens", "textDocument/codeLens")
   lmap("n", "<leader>cC", function() vim.lsp.codelens.enable(true, { bufnr = bufnr }) end, "Refresh & Display codelens", "textDocument/codeLens")
-	lmap("n", "<leader>cR", function() Snacks.rename.rename_file() end, "Rename File", "workspace/willRenameFiles")
-	lmap("n", "<leader>cr", vim.lsp.buf.rename, "Rename", "textDocument/rename")
-	lmap("n", "<leader>cA", function()
-		vim.lsp.buf.code_action({ apply = true, context = { only = { "source" }, diagnostics = {} } })
-	end, "Source Action", "textDocument/codeAction")
-	lmap("n", "<leader>co", function()
-		vim.lsp.buf.code_action({ apply = true, context = { only = { "source.organizeImports" }, diagnostics = {} } })
-	end, "Organize Imports", "textDocument/codeAction")
-	if client:supports_method("textDocument/documentHighlight", bufnr) then
-		lmap("n", "]]", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
-		lmap("n", "[[", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
-		lmap("n", "<a-n>", function() Snacks.words.jump(vim.v.count1, true) end, "Next Reference")
-		lmap("n", "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, "Prev Reference")
-	end
-	lmap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols", "textDocument/documentSymbol")
-	lmap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols", "workspace/symbol")
-	lmap("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, "C[a]lls Incoming", "callHierarchy/incomingCalls")
-	lmap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, "C[a]lls Outgoing", "callHierarchy/outgoingCalls")
+  lmap("n", "<leader>cR", function() Snacks.rename.rename_file() end, "Rename File", "workspace/willRenameFiles")
+  lmap("n", "<leader>cr", vim.lsp.buf.rename, "Rename", "textDocument/rename")
+  lmap("n", "<leader>cA", function()
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source" }, diagnostics = {} } })
+  end, "Source Action", "textDocument/codeAction")
+  lmap("n", "<leader>co", function()
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source.organizeImports" }, diagnostics = {} } })
+  end, "Organize Imports", "textDocument/codeAction")
+  if client:supports_method("textDocument/documentHighlight", bufnr) then
+    lmap("n", "]]", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
+    lmap("n", "[[", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
+    lmap("n", "<a-n>", function() Snacks.words.jump(vim.v.count1, true) end, "Next Reference")
+    lmap("n", "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, "Prev Reference")
+  end
+  lmap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols", "textDocument/documentSymbol")
+  lmap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols", "workspace/symbol")
+  lmap("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, "C[a]lls Incoming", "callHierarchy/incomingCalls")
+  lmap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, "C[a]lls Outgoing", "callHierarchy/outgoingCalls")
   -- stylua: ignore end
 
   -- your <leader>f keys (were fzf-lua, now Snacks)
@@ -110,13 +117,13 @@ M.on_attach = function(event)
   -- CONFLICT: LazyVim's debug keys are now global (plugins/debug/nvim-dap.lua) and work for Rust too.
   -- These clashed: <leader>do is Step Out there (Step Over here), <leader>du is Dap UI, <leader>dr toggles the REPL.
   -- if client.name == "rust-analyzer" then -- debugging only configured for Rust
-  -- 	local dap = require("dap")
-  -- 	keymap("n", "<leader>dc", dap.continue, opts) -- Continue / Start
-  -- 	keymap("n", "<leader>do", dap.step_over, opts) -- Step over
-  -- 	keymap("n", "<leader>di", dap.step_into, opts) -- Step into
-  -- 	keymap("n", "<leader>du", dap.step_out, opts) -- Step out
-  -- 	keymap("n", "<leader>db", dap.toggle_breakpoint, opts) -- Toggle breakpoint
-  -- 	keymap("n", "<leader>dr", dap.repl.open, opts) -- Open DAP REPL
+  --   local dap = require("dap")
+  --   keymap("n", "<leader>dc", dap.continue, opts) -- Continue / Start
+  --   keymap("n", "<leader>do", dap.step_over, opts) -- Step over
+  --   keymap("n", "<leader>di", dap.step_into, opts) -- Step into
+  --   keymap("n", "<leader>du", dap.step_out, opts) -- Step out
+  --   keymap("n", "<leader>db", dap.toggle_breakpoint, opts) -- Toggle breakpoint
+  --   keymap("n", "<leader>dr", dap.repl.open, opts) -- Open DAP REPL
   -- end
 end
 

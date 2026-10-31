@@ -4,7 +4,7 @@
 --   > github: https://github.com/REditorSupport/languageserver
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   vim.lsp.config("r_language_server", {

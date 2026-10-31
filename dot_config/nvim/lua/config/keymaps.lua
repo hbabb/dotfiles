@@ -1,19 +1,20 @@
 -- ================================================================================================
 -- TITLE: NeoVim keymaps
 -- ABOUT: sets some quality-of-life keymaps
+--        <leader> and <localleader> are set in config/globals.lua
 -- ================================================================================================
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
--- Quick config editing
-vim.keymap.set("n", "<leader>rc", "<Cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
+-- Quick config editing: opens chezmoi's copy (utils/config_dir.lua). Run `chezmoi apply` after.
+vim.keymap.set("n", "<leader>rc", function()
+  vim.cmd.edit(require("utils.config_dir")() .. "/init.lua")
+end, { desc = "Edit config" })
 
 -- CONFLICT: LazyVim sets j/k (LazyVim section below)
 -- vim.keymap.set("n", "j", function()
--- 	return vim.v.count == 0 and "gj" or "j"
+--   return vim.v.count == 0 and "gj" or "j"
 -- end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
 -- vim.keymap.set("n", "k", function()
--- 	return vim.v.count == 0 and "gk" or "k"
+--   return vim.v.count == 0 and "gk" or "k"
 -- end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
 -- CONFLICT: <leader>c is LazyVim's "code" group. LazyVim clears search with <Esc>
@@ -67,21 +68,6 @@ vim.keymap.set("n", "<leader>pa", function()
   vim.fn.setreg("+", path)
   print("file:", path)
 end, { desc = "Copy full file path" })
-
--- CONFLICT: LazyVim <leader>e = Snacks explorer (plugins/snacks.lua)
--- vim.keymap.set("n", "<leader>e", function()
---   if require("zen-mode.view").is_open() then
---     require("zen-mode").close()
---   end
---
---   local api = require("nvim-tree.api")
---
---   if api.tree.is_visible() then
---     api.tree.close()
---   else
---     api.tree.open()
---   end
--- end, { desc = "Toggle NvimTree (close Zen if active)" })
 
 -- ================================================================================================
 -- LazyVim keymaps
@@ -360,13 +346,13 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- lua
--- CONFLICT: your localleader is Space (config/globals.lua), so <localleader>r is <leader>r,
--- which collides with your <leader>rc and <leader>rn. LazyVim's localleader is "\".
+-- Off. This used to clash with <leader>rc and <leader>rn when localleader was Space.
+-- localleader is now "\" (config/globals.lua), so uncommenting this gives \r = Run Lua.
 -- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "lua",
--- 	callback = function(ev)
--- 		map({ "n", "x" }, "<localleader>r", function() Snacks.debug.run() end, { desc = "Run Lua", buffer = ev.buf })
--- 	end,
+--   pattern = "lua",
+--   callback = function(ev)
+--     map({ "n", "x" }, "<localleader>r", function() Snacks.debug.run() end, { desc = "Run Lua", buffer = ev.buf })
+--   end,
 -- })
 
 -- mini.pairs toggle (from LazyVim's mini.pairs spec in coding.lua)

@@ -1,14 +1,13 @@
 -- ================================================================================================
 -- TITLE : jsonls (JSON Language Server) LSP Setup
 -- LINKS :
---   > github: https://github.com/microsoft/vscode-json-languageservice
+--   > github : https://github.com/microsoft/vscode-json-languageservice
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (typically from nvim-cmp or similar)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
-	vim.lsp.config('jsonls', {
-		capabilities = capabilities,
-		filetypes = { "json", "jsonc" },
-	})
+  vim.lsp.config("jsonls", {
+    capabilities = capabilities,
+  })
 end

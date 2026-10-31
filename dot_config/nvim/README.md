@@ -41,19 +41,19 @@ lazy.nvim on its own (the plugin manager LazyVim is built on) doesn't have that 
 
 I like how LazyVim looks and works. So the parts that make up its look were added back one plugin at a time, each in its own file:
 
-| Plugin | What it does |
-|---|---|
-| `which-key.lua` | The popup that lists keymaps after you press Space (LazyVim's `helix` layout and group names) |
-| `mini-icons.lua` | Icons in which-key and other menus |
-| `noice.lua` | The command line as a popup in the middle of the screen, plus message popups |
-| `snacks.lua` | File finder, file explorer, notifications, terminal, scratch buffers, toggles and the start screen |
-| `bufferline.lua` | Buffer tabs across the top |
-| `flash.lua` | Jump anywhere on screen with `s` |
-| `grug-far.lua` | Search and replace across files |
-| `todo-comments.lua` | Highlights and lists `TODO` / `FIX` / `HACK` comments |
-| `persistence.lua` | Saves and restores sessions |
-| `trouble-nvim.lua` | Lists for diagnostics, symbols and quickfix |
-| `gitsigns-nvim.lua` | Git change markers in the margin and hunk keymaps |
+| Plugin              | What it does                                                                                       |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| `which-key.lua`     | The popup that lists keymaps after you press Space (LazyVim's `helix` layout and group names)      |
+| `mini-icons.lua`    | Icons in which-key and other menus                                                                 |
+| `noice.lua`         | The command line as a popup in the middle of the screen, plus message popups                       |
+| `snacks.lua`        | File finder, file explorer, notifications, terminal, scratch buffers, toggles and the start screen |
+| `bufferline.lua`    | Buffer tabs across the top                                                                         |
+| `flash.lua`         | Jump anywhere on screen with `s`                                                                   |
+| `grug-far.lua`      | Search and replace across files                                                                    |
+| `todo-comments.lua` | Highlights and lists `TODO` / `FIX` / `HACK` comments                                              |
+| `persistence.lua`   | Saves and restores sessions                                                                        |
+| `trouble-nvim.lua`  | Lists for diagnostics, symbols and quickfix                                                        |
+| `gitsigns-nvim.lua` | Git change markers in the margin and hunk keymaps                                                  |
 
 ### One keymaps file, loaded after plugins start
 
@@ -71,23 +71,21 @@ When one of my keymaps used the same key as LazyVim's, LazyVim's version won. **
 grep -rn CONFLICT ~/.config/nvim/lua
 ```
 
-| Key | Was | Now (LazyVim) |
-|---|---|---|
-| `<leader>c` | Clear search | "code" group. `Esc` clears search. |
-| `<leader>x` | Delete without yanking | "diagnostics/quickfix" group |
-| `<leader>e` | NvimTree | Snacks explorer |
-| `<leader>ff` `fg` `fb` | fzf-lua | Snacks file finder |
-| `<leader>fr` `ft` | LSP references, type definitions | Recent files, terminal |
-| `<leader>sh` | Split window | Help pages. Splits are `<leader>-` and `<leader>\|`. |
-| `<leader>bp` | Previous buffer | Pin buffer. Previous buffer is `Shift+H`. |
-| `<leader>gd` `gD` `gS` | Lspsaga definitions | Git diff and stash. Go to definition is `gd`. |
-| `<leader>d` | Cursor diagnostics | "debug" group. Line diagnostics are `<leader>cd`. |
-| `<leader>nd` | Next diagnostic | Notifications. Next diagnostic is `]d`. |
-| `<leader>ca`, `K` | Lspsaga | Neovim's built-in LSP |
-| `s` | mini.surround | Flash. Surround moved to `gs`, as in LazyVim. |
-| `Ctrl+h/j/k/l` | vim-tmux-navigator | Move between windows. tmux pane moves are off. |
-| `n` / `N` | Centers the screen | Doesn't center |
-| `[i` `]i` `ii` `ai` | mini.indentscope | Snacks scope |
+| Key                    | Was                              | Now (LazyVim)                                        |
+| ---------------------- | -------------------------------- | ---------------------------------------------------- |
+| `<leader>c`            | Clear search                     | "code" group. `Esc` clears search.                   |
+| `<leader>x`            | Delete without yanking           | "diagnostics/quickfix" group                         |
+| `<leader>e`            | NvimTree (removed)               | Snacks explorer                                      |
+| `<leader>fr` `ft`      | LSP references, type definitions | Recent files, terminal                               |
+| `<leader>sh`           | Split window                     | Help pages. Splits are `<leader>-` and `<leader>\|`. |
+| `<leader>bp`           | Previous buffer                  | Pin buffer. Previous buffer is `Shift+H`.            |
+| `<leader>gd` `gD` `gS` | Lspsaga definitions              | Git diff and stash. Go to definition is `gd`.        |
+| `<leader>d`            | Cursor diagnostics               | "debug" group. Line diagnostics are `<leader>cd`.    |
+| `<leader>nd`           | Next diagnostic                  | Notifications. Next diagnostic is `]d`.              |
+| `<leader>ca`, `K`      | Lspsaga                          | Neovim's built-in LSP                                |
+| `s`                    | mini.surround                    | Flash. Surround moved to `gs`, as in LazyVim.        |
+| `n` / `N`              | Centers the screen               | Doesn't center                                       |
+| `[i` `]i` `ii` `ai`    | mini.indentscope                 | Snacks scope                                         |
 
 `mini.indentscope` and `mini.notify` are also commented out, because snacks and noice now do those jobs.
 
@@ -95,7 +93,7 @@ grep -rn CONFLICT ~/.config/nvim/lua
 
 - `<leader>L` only opens LazyVim's own changelog.
 - `<leader>cF` needs the conform formatter, which this config doesn't use (efm handles formatting).
-- LazyVim's "Run Lua" key (`<localleader>r`) would land on `<leader>r` here, because my localleader is also Space. That clashes with `<leader>rc` and `<leader>rn`.
+- LazyVim's "Run Lua" key (`<localleader>r`) is commented out in `keymaps.lua`. My localleader is `\` now, so it no longer clashes and can be turned back on.
 
 ### LazyVim helpers replaced
 
@@ -110,7 +108,7 @@ LazyVim's keymaps call LazyVim's own functions. Those were swapped for plain Neo
 
 Omarchy's own setup links `lua/plugins/theme.lua` to the current Omarchy theme's `neovim.lua`. Those theme files are written for LazyVim (they set the colorscheme through a `LazyVim/LazyVim` block).
 
-`lua/plugins/omarchy-theme.lua` replaces that link:
+`lua/plugins/ui/omarchy-theme.lua` replaces that link:
 
 - It reads `~/.local/state/omarchy/current/theme/neovim.lua`, takes the colorscheme name from the LazyVim block, and loads the theme plugins.
 - It watches that folder. When you change the Omarchy theme, Neovim switches colors right away, downloading the colorscheme first if it isn't installed.
@@ -127,13 +125,54 @@ Two details:
 - **The logo is stored as a list of lines and padded to equal width when Neovim starts.** Format-on-save runs `mini.trailspace`, which removes spaces at the end of lines. The logo needs those spaces to line up, so saving `snacks.lua` used to break it.
 - **mini.trailspace is turned off on the dashboard.** It paints end-of-line spaces red, and the dashboard pads every line with spaces to center it.
 
-### markdown-preview without yarn
+### Markdown and notes
 
-The usual build step for `markdown-preview.nvim` is `cd app && yarn install`, which fails when yarn isn't installed. `markdown-preview.lua` uses the plugin's own installer instead, which downloads a prebuilt program. After a fresh install, run:
+- **render-markdown.nvim** draws markdown inside Neovim with its Obsidian preset, so headings, checkboxes and callouts stay drawn while typing. `:RenderMarkdown toggle` turns it off.
+- **obsidian.nvim** works with the notes folder in `plugins/coding/obsidian-nvim.lua` (`<leader>o` keys). It only loads when that folder exists.
+- **live-preview.nvim** shows the file in the browser with `:LivePreview start`. It replaced markdown-preview.nvim, which needed a separate build step and hasn't been updated since 2023.
 
-```
-:Lazy build markdown-preview.nvim
-```
+### Languages and tools
+
+Language servers are set up with Neovim's own `vim.lsp.config` / `vim.lsp.enable`, one file per server in `lua/servers/`. Linters and formatters run through efm (`servers/efm-langserver.lua`). Mason installs and updates all of them on startup (`plugins/lsp/mason-tool-installer.lua`).
+
+| Language                      | Language server                               | Lint / format                                     |
+| ----------------------------- | --------------------------------------------- | ------------------------------------------------- |
+| Go, templ                     | gopls, templ                                  | revive, gofumpt                                   |
+| Python                        | pyright (uses the project's `.venv`)          | ruff                                              |
+| TypeScript, JavaScript, React | ts_ls                                         | eslint_d, prettierd                               |
+| Vue                           | vue_ls + ts_ls                                | eslint_d, prettierd                               |
+| Svelte                        | svelte + ts_ls                                | eslint_d, prettierd                               |
+| HTML, CSS, Tailwind, HTMX     | emmet_ls, tailwindcss, htmx                   | prettierd                                         |
+| Flask / Jinja templates       | the HTML servers above, for `.html` templates | djlint                                            |
+| Rust                          | rust-analyzer (via rustaceanvim)              | rustfmt                                           |
+| C / C++                       | clangd                                        | cpplint, clang-format                             |
+| R                             | r_language_server                             | lintr, styler (R packages)                        |
+| Ruby                          | ruby_lsp                                      | ruby_lsp                                          |
+| Lua                           | lua_ls + lazydev                              | luacheck, stylua                                  |
+| Bash, Fish, Nushell           | bashls, fish_lsp, nushell                     | shellcheck, shfmt, fish_indent                    |
+| SQL                           | postgres_lsp (Postgres projects)              | sqlfluff (dialect from the project's `.sqlfluff`) |
+| JSON, YAML, TOML, Docker      | jsonls, yamlls, tombi, dockerls               | fixjson, prettierd, tombi, hadolint               |
+
+Format on save is on by default. `<leader>uf` turns it off globally, `<leader>uF` for the current buffer.
+
+### Completion
+
+blink.cmp is the completion menu, with snippets from friendly-snippets. `<leader>a` turns completion off and on. `Ctrl+j` / `Ctrl+k` move through the list and `Enter` accepts.
+
+### Finding files
+
+The Snacks picker and explorer handle finding files, text search and the file tree. Yazi (`<leader>y`) is there for full file management. Hidden files (dotfiles) show up in the file finder, text search and explorer; files in `.gitignore` stay hidden, and the explorer skips `.git`.
+
+My old fzf-lua keys kept their letters and now open Snacks: `<leader>fh` help, `<leader>fx` / `fX` diagnostics, `<leader>fs` / `fS` / `fw` symbols, `<leader>fi` implementations.
+
+### Debugging and tests
+
+- **Debugging** uses nvim-dap with nvim-dap-ui (`<leader>d` keys). Go uses Delve (nvim-dap-go), Python uses debugpy (nvim-dap-python), and Rust uses codelldb (rustaceanvim).
+- **Tests** use neotest (`<leader>t` keys) with gotestsum for Go and pytest / unittest for Python. `<leader>td` debugs the nearest test.
+
+### Editing this config with chezmoi
+
+This folder is managed by chezmoi, so the real copy lives in `~/.local/share/chezmoi/dot_config/nvim`. `<leader>rc`, `<leader>fc` and the dashboard's "Config" open that copy (found with `chezmoi source-path`). Run `chezmoi apply` after editing to update `~/.config/nvim`.
 
 ### Smaller choices
 
@@ -147,6 +186,8 @@ The usual build step for `markdown-preview.nvim` is `cd app && yarn install`, wh
 ```
 ~/.config/nvim
 ├── init.lua                  -- loads config/lazy.lua
+├── plugin
+│   └── transparency.lua      -- clears editor backgrounds (re-applied on theme change)
 └── lua
     ├── config
     │   ├── globals.lua       -- leader keys (loaded first)
@@ -155,8 +196,14 @@ The usual build step for `markdown-preview.nvim` is `cd app && yarn install`, wh
     │   ├── keymaps.lua       -- my keymaps + LazyVim's (loaded on VeryLazy)
     │   └── lazy.lua          -- installs lazy.nvim and loads everything
     ├── plugins               -- one file per plugin
+    │   ├── coding            -- completion, treesitter, tests, markdown, notes
+    │   ├── debug             -- nvim-dap and the language debuggers
+    │   ├── editor            -- snacks, yazi, git, search, sessions
+    │   ├── lsp               -- nvim-lspconfig, Mason, lazydev, lspsaga
+    │   └── ui                -- theme, status line, tabs, which-key, noice
     ├── servers               -- one file per language server, plus efm
     └── utils
+        ├── config_dir.lua    -- finds this config in chezmoi's source
         ├── diagnostics.lua   -- diagnostic signs and display
         ├── lsp.lua           -- LSP keymaps (runs when a server attaches)
         └── root.lua          -- finds the project root
@@ -171,7 +218,9 @@ The usual build step for `markdown-preview.nvim` is `cd app && yarn install`, wh
 - **Omarchy**, for theme sync. On other systems the colorscheme falls back to `habamax`.
 - **`git`**, so lazy.nvim can download plugins.
 - **`lazygit`** (optional), for `<leader>gg`. Omarchy includes it.
-- **An Obsidian notes folder** at the path set in `plugins/obsidian-nvim.lua`, or obsidian.nvim errors on startup.
+- **An Obsidian notes folder** (optional) at the path set in `plugins/coding/obsidian-nvim.lua`. Without it, obsidian.nvim stays off.
+- **`yazi`** for `<leader>y`, and **`fd`** for venv-selector.
+- **R** installed, for the R language server.
 
 ---
 

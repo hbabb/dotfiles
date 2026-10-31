@@ -32,8 +32,10 @@ return {
       "ruff",
       "debugpy", -- Python debugger
 
-      -- TypeScript / JavaScript / React
+      -- TypeScript / JavaScript / React / Vue / Svelte
       "typescript-language-server",
+      "vue-language-server", -- also brings the Vue plugin ts_ls loads
+      "svelte-language-server", -- also brings the Svelte plugin ts_ls loads
       "eslint_d",
       "prettierd",
 

@@ -14,7 +14,7 @@ return {
     {
       "mason-org/mason.nvim",
       opts = {},
-      keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Masson" } },
+      keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     }, -- LSP/DAP/Linter installer & manager
     "creativenull/efmls-configs-nvim", -- Preconfigured EFM Language Server setups
     "saghen/blink.cmp", -- completion menu; servers/init.lua gets its LSP capabilities from it

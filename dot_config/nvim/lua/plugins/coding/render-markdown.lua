@@ -1,9 +1,9 @@
 -- ================================================================================================
 -- TITLE : render-markdown.nvim
--- ABOUT : Draws Markdown headings, tables, checkboxes, code blocks and callouts nicely inside
---         Neovim. The line you're editing switches back to plain text.
---         Toggle with :RenderMarkdown toggle. obsidian.nvim turns its own rendering off when
---         this plugin is installed.
+-- ABOUT : draws markdown inside Neovim (headings, code blocks, tables, checkboxes, callouts).
+--         the obsidian preset keeps it drawn while typing, like Obsidian's Live Preview.
+--         toggle with :RenderMarkdown toggle. obsidian.nvim turns its own drawing off when this
+--         is installed.
 -- LINKS :
 --   > github : https://github.com/MeanderingProgrammer/render-markdown.nvim
 -- ================================================================================================
@@ -14,6 +14,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-mini/mini.icons",
   },
-  ft = { "markdown" },
-  opts = {},
+  ft = { "markdown", "rmd" },
+  opts = {
+    preset = "obsidian", -- keep drawing in every mode (normal, insert, visual), like Obsidian
+    file_types = { "markdown", "rmd" }, -- markdown and R Markdown
+    completions = { lsp = { enabled = true } }, -- blink.cmp suggests callouts and checkboxes
+  },
 }

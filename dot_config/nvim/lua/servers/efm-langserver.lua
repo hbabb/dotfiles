@@ -6,7 +6,7 @@
 --   > configs: https://github.com/creativenull/efmls-configs-nvim/tree/main
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   local fs = require("efmls-configs.fs")
@@ -19,13 +19,13 @@ return function(capabilities)
   local djlint_format = require("efmls-configs.formatters.djlint") -- jinja (flask) template formatter
   local go_revive = require("efmls-configs.linters.go_revive") -- go linter
   local gofumpt = require("efmls-configs.formatters.gofumpt") -- go formatter
-  local prettier_d = require("efmls-configs.formatters.prettier_d") -- ts/js/json/docker/html/css/react/svelte/vue/yaml formatter
-  local eslint_d = require("efmls-configs.linters.eslint_d") -- ts/js/json/react/svelte/vue linter
+  local prettier_d = require("efmls-configs.formatters.prettier_d") -- ts/js/html/css/vue/yaml/markdown formatter
+  local eslint_d = require("efmls-configs.linters.eslint_d") -- ts/js/react/svelte/vue linter
   local fixjson = require("efmls-configs.formatters.fixjson") -- json formatter
   local shellcheck = require("efmls-configs.linters.shellcheck") -- bash linter
   local shfmt = require("efmls-configs.formatters.shfmt") -- bash formatter
   local fish_indent = require("efmls-configs.formatters.fish_indent") -- fish formatter (comes with fish)
-  local hadolint = require("efmls-configs.linters.hadolint") -- docker linter
+  local hadolint = require("efmls-configs.linters.hadolint") -- Dockerfile linter
   local cpplint = require("efmls-configs.linters.cpplint") -- c/cpp linter
   local clangformat = require("efmls-configs.formatters.clang_format") -- c/cpp formatter
 
@@ -53,7 +53,7 @@ return function(capabilities)
       "c",
       "cpp",
       "css",
-      "docker",
+      "dockerfile",
       "fish",
       "go",
       "html",
@@ -87,7 +87,8 @@ return function(capabilities)
         c = { clangformat, cpplint },
         cpp = { clangformat, cpplint },
         css = { prettier_d },
-        docker = { hadolint, prettier_d },
+        -- Neovim names Dockerfiles "dockerfile". Prettier doesn't format Dockerfiles.
+        dockerfile = { hadolint },
         fish = { fish_indent },
         go = { gofumpt, go_revive },
         html = { prettier_d },
@@ -95,8 +96,8 @@ return function(capabilities)
         javascript = { eslint_d, prettier_d },
         javascriptreact = { eslint_d, prettier_d },
         jinja = { djlint_lint, djlint_format },
-        json = { eslint_d, fixjson },
-        jsonc = { eslint_d, fixjson },
+        json = { fixjson },
+        jsonc = { fixjson },
         lua = { luacheck, stylua },
         markdown = { prettier_d },
         python = { ruff_lint, ruff_format },

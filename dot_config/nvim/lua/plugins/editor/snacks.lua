@@ -66,7 +66,7 @@ return {
           { icon = "\u{f502} ",  key = "p", desc = "Projects",        action = ":lua Snacks.picker.projects()" },
           { icon = "\u{f022} ",  key = "g", desc = "Find Text",       action = ":lua Snacks.picker.grep({ cwd = require('utils.root')() })" },
           { icon = "\u{f0c5} ",  key = "r", desc = "Recent Files",    action = ":lua Snacks.picker.recent()" },
-          { icon = "\u{f423} ",  key = "c", desc = "Config",          action = ":lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })" },
+          { icon = "\u{f423} ",  key = "c", desc = "Config",          action = ":lua Snacks.picker.files({ cwd = require('utils.config_dir')() })" },
           { icon = "\u{e348} ",  key = "s", desc = "Restore Session", section = "session" },
           { icon = "\u{f04b2} ", key = "l", desc = "Lazy",            action = ":Lazy" },
           { icon = "\u{f426} ",  key = "q", desc = "Quit",            action = ":qa" },
@@ -162,7 +162,7 @@ return {
     -- find
     { "<leader>fb",      function() Snacks.picker.buffers() end,                                   desc = "Buffers" },
     { "<leader>fB",      function() Snacks.picker.buffers({ hidden = true, nofile = true }) end,   desc = "Buffers (all)" },
-    { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,   desc = "Find Config File" },
+    { "<leader>fc",      function() Snacks.picker.files({ cwd = require("utils.config_dir")() }) end, desc = "Find Config File" },
     { "<leader>ff",      function() Snacks.picker.files({ cwd = root() }) end,                     desc = "Find Files (Root Dir)" },
     { "<leader>fF",      function() Snacks.picker.files() end,                                     desc = "Find Files (cwd)" },
     { "<leader>fg",      function() Snacks.picker.git_files() end,                                 desc = "Find Files (git-files)" },

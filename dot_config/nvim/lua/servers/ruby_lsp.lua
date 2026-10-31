@@ -4,7 +4,7 @@
 --   > website: https://shopify.github.io/ruby-lsp/
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (from nvim-cmp)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
   vim.lsp.config("ruby_lsp", {

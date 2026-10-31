@@ -1,25 +1,15 @@
 -- ================================================================================================
 -- TITLE : emmet_ls (Emmet Language Server) LSP Setup
--- ABOUT : Configures Emmet Language Server for web-related (e.g. TS/JS, CSS, Sass, Svelte, Vue)
+-- ABOUT : Emmet abbreviations (div.card>ul>li*3). Uses nvim-lspconfig's default file types:
+--         HTML, templ, Django-style templates, CSS/Sass/Less, JSX/TSX, Svelte and Vue.
 -- LINKS :
---   > github: https://github.com/aca/emmet-ls
+--   > github : https://github.com/aca/emmet-ls
 -- ================================================================================================
 
---- @param capabilities table LSP client capabilities (typically from nvim-cmp or similar)
+--- @param capabilities table LSP client capabilities (from blink.cmp, see servers/init.lua)
 --- @return nil
 return function(capabilities)
-	vim.lsp.config('emmet_ls', {
-		capabilities = capabilities,
-		filetypes = {
-			"typescript",
-			"javascript",
-			"javascriptreact",
-			"typescriptreact",
-			"css",
-			"sass",
-			"scss",
-			"svelte",
-			"vue",
-		},
-	})
+  vim.lsp.config("emmet_ls", {
+    capabilities = capabilities,
+  })
 end

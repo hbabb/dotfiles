@@ -27,6 +27,7 @@
 
 [commit]
 	verbose = true           # Include diff comment in commit message template
+	gpgsign = true           # Sign every commit (SSH key from 1Password, set below)
 
 [column]
 	ui = auto 			         # Output in columns when possible
@@ -44,6 +45,7 @@
 [user]
 	name = Heath Babb
 	email = hbabb@hey.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIADCsQIvGBdM+rnm16y1ziLKZhlytGSuryz1Q2G1wAsW
   # useConfigOnly = tree  # From my dotfiles
 
 # My custom settings
@@ -71,16 +73,11 @@
   process = git-lfs filter-process
   required = true
 
-# Setting up git sighning
-[user]
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIADCsQIvGBdM+rnm16y1ziLKZhlytGSuryz1Q2G1wAsW
-
+# Commit signing with an SSH key from 1Password (signingkey is under [user])
 [gpg]
   format = ssh
 
 [gpg "ssh"]
   program = "/opt/1Password/op-ssh-sign"
-
-[commit]
-  gpgsign = true
+  allowedSignersFile = ~/.ssh/allowed_signers   # lets git verify signatures (also used by jj)
 

@@ -195,9 +195,9 @@ map("n", "<leader>xq", function()
 end, { desc = "Quickfix List" })
 -- [q and ]q are set in plugins/trouble-nvim.lua (same as LazyVim)
 
--- formatting (LazyVim uses its own formatter; this uses the LSP, which is efm in your config)
+-- formatting: the same server format-on-save uses (utils/format.lua), efm for most file types
 map({ "n", "x" }, "<leader>cf", function()
-  vim.lsp.buf.format()
+  require("utils.format").format(0)
 end, { desc = "Format" })
 
 -- diagnostic

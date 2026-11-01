@@ -9,8 +9,11 @@ My config files for [Omarchy](https://omarchy.org), managed with [chezmoi](https
 | [`dot_config/nvim`](dot_config/nvim)                         | My Neovim setup: plain lazy.nvim, one file per plugin, LazyVim's look and keymaps. See its [README](dot_config/nvim/README.md). |
 | [`dot_config/git`](dot_config/git)                           | My git config.                                                                                                                  |
 | [`dot_config/private_jj`](dot_config/private_jj)             | My jj config. `private_` makes chezmoi install it as `~/.config/jj` readable only by me.                                        |
+| [`private_dot_ssh`](private_dot_ssh)                         | `allowed_signers`: my public signing key, so git and jj can verify signed commits.                                             |
 | [`dot_config/tmux`](dot_config/tmux)                         | My tmux config, with TPM for plugins. Prefix is `Ctrl+b`.                                                                       |
 | [`dot_config/sqlfluff`](dot_config/sqlfluff)                 | Fallback SQL lint/format settings (ANSI dialect) for projects that don't have their own `.sqlfluff`.                            |
+| [`dot_config/tombi`](dot_config/tombi)                       | Fallback TOML format settings (4-space indent) for projects that don't have their own tombi config.                             |
+| [`dot_config/starship.toml`](dot_config/starship.toml)       | My starship prompt, used by bash, zsh and fish.                                                                                 |
 | [`dot_zshrc`](dot_zshrc), [`dot_config/zsh`](dot_config/zsh) | My zsh setup: Omarchy's zsh config plus my own files, one per topic, with Oh My Zsh. `.zshrc` loads them in order.              |
 
 chezmoi names files by where they go: `dot_config/nvim` is installed as `~/.config/nvim`.
@@ -23,25 +26,27 @@ chezmoi names files by where they go: `dot_config/nvim` is installed as `~/.conf
    omarchy pkg add chezmoi
    ```
 
-2. Install the packages the zsh config uses:
+2. Install the packages the zsh and tmux configs use:
 
    ```sh
-   sudo pacman -S --needed omarchy-zsh zsh-autosuggestions zsh-history-substring-search atuin
+   sudo pacman -S --needed omarchy-zsh zsh-autosuggestions zsh-history-substring-search atuin fish omarchy-fish
    ```
 
-3. Download this repo and copy the files into place:
+3. Switch to zsh:
+
+   ```sh
+   omarchy-setup-zsh
+   ```
+
+   This replaces `~/.zshrc` with Omarchy's template, so it runs before the next step.
+
+4. Download this repo and copy the files into place:
 
    ```sh
    chezmoi init --apply hbabb
    ```
 
-   This also downloads Oh My Zsh into `~/.oh-my-zsh` (set in [`.chezmoiexternal.toml`](.chezmoiexternal.toml)).
-
-4. Switch to zsh:
-
-   ```sh
-   omarchy-setup-zsh
-   ```
+   This puts my `.zshrc` back over Omarchy's template. It also downloads Oh My Zsh into `~/.oh-my-zsh` and TPM into `~/.config/tmux/plugins/tpm` (both set in [`.chezmoiexternal.toml`](.chezmoiexternal.toml)). In tmux, `prefix + I` then installs the tmux plugins.
 
    The first zsh start downloads fast-syntax-highlighting into `~/.config/zsh/plugins`.
 

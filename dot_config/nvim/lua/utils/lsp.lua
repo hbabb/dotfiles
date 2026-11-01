@@ -35,7 +35,7 @@ M.on_attach = function(event)
   -- keymap("n", "<leader>gS", "<cmd>vsplit | Lspsaga goto_definition<CR>", opts) -- goto definition in split
   -- CONFLICT: LazyVim <leader>ca = Code Action (native LSP, below)
   -- keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- Code actions
-  keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- Rename symbol
+  -- Rename is <leader>cr (LazyVim's key, below)
   keymap("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Line diagnostics (float)
   -- CONFLICT: <leader>d is LazyVim's "debug" group. LazyVim uses <leader>cd for line diagnostics
   -- keymap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- Cursor diagnostics

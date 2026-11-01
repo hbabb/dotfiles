@@ -16,8 +16,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
 
 # Empty = no Oh My Zsh theme; Starship draws the prompt
-# ZSH_THEME=""
-# Oh My Zsh's default theme; change the name to use a different one
 ZSH_THEME=""
 
 plugins=(git jj)

@@ -30,21 +30,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Format on save
--- Most file types format through efm (formatters are set in servers/efm-langserver.lua).
--- These file types format through their own language server instead:
-local lsp_formatters = {
-  toml = "tombi", -- efm has no tombi entry
-  templ = "templ", -- the templ language server runs `templ fmt`
-  r = "r_language_server", -- formats with the styler R package
-  rmd = "r_language_server",
-  ruby = "ruby_lsp", -- formats with RuboCop
-  rust = "rust-analyzer", -- formats with rustfmt (started by rustaceanvim)
-}
-
--- true when a language server with this name is running for this buffer
-local function has_client(bufnr, name)
-  return not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = bufnr, name = name }))
-end
+-- utils/format.lua picks the server (efm for most file types), so <leader>cf formats the same way.
+local format = require("utils.format")
 
 local lsp_fmt_group = vim.api.nvim_create_augroup("FormatOnSaveGroup", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -58,12 +45,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     -- remove spaces at the end of lines (only when format-on-save is on)
     require("mini.trailspace").trim()
 
-    local filetype = vim.bo[args.buf].filetype
-    local server = lsp_formatters[filetype] or "efm"
-    if has_client(args.buf, server) then
-      -- not async: wait for formatting to finish before the file is written
-      vim.lsp.buf.format({ bufnr = args.buf, name = server })
-    end
+    -- not async: wait for formatting to finish before the file is written
+    format.format(args.buf)
 
     -- pyproject.toml also runs through pyproject-fmt, after tombi
     local file_name = vim.fs.basename(vim.api.nvim_buf_get_name(args.buf))

@@ -1,0 +1,3 @@
+# Keys trusted when git and jj verify commit signatures (ssh-keygen "ALLOWED SIGNERS" format).
+# Public keys only, so this file is safe to keep in the repo.
+hbabb@hey.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIADCsQIvGBdM+rnm16y1ziLKZhlytGSuryz1Q2G1wAsW

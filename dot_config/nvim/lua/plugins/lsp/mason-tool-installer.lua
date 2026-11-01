@@ -6,11 +6,23 @@
 --   > github : https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 -- ================================================================================================
 
+-- R and Ruby servers need R / Ruby on the machine, so they're only installed where those exist
+local function optional_tools()
+  local tools = {}
+  if vim.fn.executable("R") == 1 then
+    table.insert(tools, "r-languageserver")
+  end
+  if vim.fn.executable("ruby") == 1 then
+    table.insert(tools, "ruby-lsp")
+  end
+  return tools
+end
+
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
   dependencies = { "mason-org/mason.nvim" },
   opts = {
-    ensure_installed = {
+    ensure_installed = vim.list_extend({
       -- runs the formatters and linters below
       "efm",
 
@@ -38,12 +50,6 @@ return {
       "svelte-language-server", -- also brings the Svelte plugin ts_ls loads
       "eslint_d",
       "prettierd",
-
-      -- R (needs R installed)
-      "r-languageserver",
-
-      -- Ruby
-      "ruby-lsp",
 
       -- C / C++
       "clangd",
@@ -82,7 +88,7 @@ return {
       -- Docker
       "dockerfile-language-server",
       "hadolint",
-    },
+    }, optional_tools()),
     auto_update = true, -- update listed tools when a new version is out
     run_on_start = true, -- check every time Neovim starts
   },
